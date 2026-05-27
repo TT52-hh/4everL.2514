@@ -9,15 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             
-            // 读取 HTML 标签里预设的 data 属性值
             const title = link.getAttribute('data-title');
             const desc = link.getAttribute('data-desc');
             
-            // 动态注入到详情弹窗中
             detailProjectMeta.textContent = title;
             detailProjectDesc.textContent = desc;
             
-            // 显示全屏详情页并置顶
             projectOverlay.style.display = 'block';
             window.scrollTo(0, 0);
         });
