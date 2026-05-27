@@ -10,7 +10,6 @@
     --bg-color: #ffffff;
     --text-color: #000000;
     --border-color: #000000;
-    /* 强制使用完美的现代中英文无衬线字体族 */
     --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Microsoft YaHei", sans-serif;
 }
 
@@ -23,7 +22,7 @@ body {
     font-size: 14px;
 }
 
-/* 链接无多余装饰线，保持截图中的极简冷淡感 */
+/* 移除死板的下划线，保持 Cargo 冷淡高级感 */
 a {
     color: inherit;
     text-decoration: none;
@@ -34,21 +33,28 @@ a:hover {
     opacity: 0.6;
 }
 
-/* 经典双栏开放式布局 */
+/* 双栏开放式布局 */
 .container {
     display: flex;
     max-width: 1300px;
     margin: 0 auto;
     gap: 120px;
+    position: relative;
 }
 
-.left-col { flex: 1.1; }
+.left-col { 
+    flex: 1.1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 80vh; /* 撑开垂直高度以放置左下角时间 */
+}
 .right-col { flex: 0.9; }
 
 /* 站点左上角标识 */
 .site-logo {
     font-size: 16px;
-    font-weight: 600; /* 略微加粗，与截图对齐 */
+    font-weight: 600;
     margin-bottom: 25px;
     letter-spacing: -0.2px;
 }
@@ -63,21 +69,32 @@ a:hover {
 .section { margin-bottom: 40px; }
 .year-group { margin-bottom: 30px; }
 
+/* 调整年份字号、颜色，并向右缩进 16px (约1-2个字符) */
 .year-label { 
-    font-size: 14px;
-    font-weight: 500; 
-    margin-bottom: 10px; 
+    font-size: 12px;
+    color: #888; 
+    font-weight: 400; 
+    margin-bottom: 12px; 
+    padding-left: 16px; 
 }
 
 .project-list { list-style: none; }
 .project-item { margin-bottom: 8px; }
 
 .project-link {
-    text-decoration: none;
     font-size: 14px;
+    font-weight: 400;
 }
 
-/* 右栏精准排版 */
+/* 左下角时间微调：灰色，字号略大于右下角 */
+.left-footer-date {
+    font-size: 14px;
+    color: #888;
+    margin-top: auto;
+    padding-top: 60px;
+}
+
+/* 右栏特定排版 */
 .header-title-block { margin-bottom: 25px; }
 
 .main-title { 
@@ -88,7 +105,7 @@ a:hover {
 
 .chinese-subtext {
     font-size: 12px;
-    color: #666;
+    color: #666; /* 保持较深一点的灰色 */
     display: block;
     margin-top: 2px;
 }
@@ -109,10 +126,11 @@ a:hover {
 .info-list { list-style: none; margin-bottom: 50px; }
 .info-list li { margin-bottom: 8px; font-size: 14px; }
 
+/* 调整右侧版权上移，为底部留出放图空间 */
 .footer-date { 
     font-size: 13px;
     color: #000; 
-    margin-top: 100px; 
+    margin-top: 50px; /* 从原先的100px缩减到50px实现上移 */
 }
 
 /* 经典对角线占位框 */
@@ -133,7 +151,7 @@ a:hover {
     background: linear-gradient(to top right, transparent calc(50% - 0.5px), var(--border-color) calc(50% - 0.5px), var(--border-color) calc(50% + 0.5px), transparent calc(50% + 0.5px));
 }
 
-/* 动态详情页全屏弹出层样式（同样共享无衬线字体） */
+/* 动态详情页全屏弹出层样式 */
 .detail-overlay {
     display: none;
     position: fixed;
@@ -154,7 +172,6 @@ a:hover {
 }
 
 .back-link {
-    text-decoration: none;
     font-weight: 500;
     font-size: 14px;
 }
@@ -168,4 +185,6 @@ a:hover {
 @media (max-width: 850px) {
     .container { flex-direction: column; gap: 50px; }
     body, .detail-overlay { padding: 30px 20px; }
+    .left-col { min-height: auto; }
+    .left-footer-date { margin-top: 20px; padding-top: 0; }
 }
