@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TT Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,7 +14,7 @@
     <div class="container">
         
         <div class="left-col">
-            <h1>TT</h1>
+            <h1 class="site-logo">TT</h1>
             <div class="subtitle">Portfolio for Neo</div>
             
             <div class="section">
@@ -19,16 +22,28 @@
                     <div class="year-label">2026</div>
                     <ul class="project-list">
                         <li class="project-item">
-                            <a class="project-link open-project" data-title="小红书自媒体运营" data-desc="AI视觉叙事与社交媒体传播策略研究。">小红书自媒体运营</a>
+                            <a class="project-link open-project" 
+                               data-title="小红书自媒体运营" 
+                               data-quote="AI叙事在多模态社交媒体中的全链路破圈实验。" 
+                               data-detail="负责账号矩阵的视觉升级、内容策划与自动化工作流搭建。">小红书自媒体运营</a>
                         </li>
                         <li class="project-item">
-                            <a class="project-link open-project" data-title="AI视觉叙事项目" data-desc="基于扩散模型与生成式AI的实验性图像与叙事工作流。">AI视觉叙事项目</a>
+                            <a class="project-link open-project" 
+                               data-title="AI视觉叙事项目" 
+                               data-quote="Exploring experimental workflows with Diffusion models." 
+                               data-detail="基于生成式AI工作流进行古典美学的二次数字化视觉重构。">AI视觉叙事项目</a>
                         </li>
                         <li class="project-item">
-                            <a class="project-link open-project" data-title="数字服务类APP“观寺”UI设计" data-desc="传统与现代结合的数字服务类移动应用端界面设计。">数字服务类APP“观寺”UI设计</a>
+                            <a class="project-link open-project" 
+                               data-title="数字服务类APP“观寺”UI设计" 
+                               data-quote="Connecting modern interfaces with traditional sanctuary spiritual experiences." 
+                               data-detail="完成从用户调研、交互原型推演到最终高保真视觉切图的全栈设计。">数字服务类APP“观寺”UI设计</a>
                         </li>
                         <li class="project-item">
-                            <a class="project-link open-project" data-title="传统文化可视化表达" data-desc="非物质文化遗产与古典美学的数字化视觉重构表达。">传统文化可视化表达</a>
+                            <a class="project-link open-project" 
+                               data-title="传统文化可视化表达" 
+                               data-quote="非物质文化遗产与古典符号的多维动态重组。" 
+                               data-detail="将传统视觉元素进行解构，赋予其契合数字媒介传播的现代美学形态。">传统文化可视化表达</a>
                         </li>
                     </ul>
                 </div>
@@ -37,10 +52,16 @@
                     <div class="year-label">2025</div>
                     <ul class="project-list">
                         <li class="project-item">
-                            <a class="project-link open-project" data-title="原创设计字体孵化" data-desc="商业艺术字形实验性推演与字库孵化。">原创设计字体孵化</a>
+                            <a class="project-link open-project" 
+                               data-title="原创设计字体孵化" 
+                               data-quote="Typography experimentation & structural evolution." 
+                               data-detail="独立设计完成一套实验性美术字形，并成功完成字库包推演。">原创设计字体孵化</a>
                         </li>
                         <li class="project-item">
-                            <a class="project-link open-project" data-title="线下视觉设计实践" data-desc="实体多维空间的视觉导视系统与海报落地实践。">线下视觉设计实践</a>
+                            <a class="project-link open-project" 
+                               data-title="线下视觉设计实践" 
+                               data-quote="Dimensional graphics and spatial sign systems." 
+                               data-detail="线下展览空间的导视系统搭建与系列视觉海报印刷工艺落地。">线下视觉设计实践</a>
                         </li>
                     </ul>
                 </div>
@@ -51,7 +72,7 @@
             <div class="header-title-block">
                 <div class="main-title">TT® Digital Media Artist</div>
                 <span class="chinese-subtext">数字媒体艺术</span>
-                <div class="main-title" style="font-weight: normal; margin-top: 2px;">based in Guangzhou</div>
+                <div class="location-text">based in Guangzhou</div>
             </div>
 
             <div class="bio-text">
@@ -76,17 +97,16 @@
         <div class="detail-header">
             <div>
                 <a href="#" class="back-link" id="closeDetailBtn">← TT Portfolio</a>
-                <span id="detailProjectMeta" style="margin-left: 15px; color: #666; font-weight: bold;"></span>
+                <span id="detailProjectMeta" style="margin-left: 20px; color: #666; font-weight: normal;"></span>
             </div>
         </div>
         <div class="detail-content">
             <div class="visual-box"></div>
             <div class="detail-text-block">
-                <p id="detailProjectDesc" style="font-size: 16px; margin-bottom: 20px; color: #333;"></p>
-                <p style="font-style: italic; font-size: 18px; margin-bottom: 25px; color: #000;">
-                    “Curabitur vitae odio pretium, volutpat augue efficitur, ullamcorper ante.”
-                </p>
-                <p style="color: #666; font-size: 13px;">[此处可在代码中自由追加具体项目的图片 `<img>` 标签或详细复盘文字]</p>
+                <p id="detailProjectQuote" class="detail-quote-highlight"></p>
+                <p style="font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; color: #000;">Overview</p>
+                <p id="detailProjectDesc" style="font-size: 14px; color: #44px; line-height: 1.7; margin-bottom: 30px;"></p>
+                <p style="color: #999; font-size: 12px; font-family: var(--font-main);">[提示：你可以在 index.html 的这个位置追加真实的作品图片 &lt;img src="图片路径"&gt; ]</p>
             </div>
             <div class="detail-sub-section">
                 <h3>Details (4)</h3>
