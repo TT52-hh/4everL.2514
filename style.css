@@ -1,98 +1,145 @@
-/* 全局重置与变量定义 */
+/* 全局基础重置与平滑字体 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 :root {
     --bg-color: #ffffff;
     --text-color: #000000;
     --border-color: #000000;
-    --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-serif: Georgia, serif;
+    /* 核心主英文字体采用复古高级的 Playfair Display 衬线体，中文采用平滑优雅的宋体/黑体过渡 */
+    --font-serif: 'Playfair Display', Georgia, "Nimbus Roman No9 L", "Songti SC", "Noto Serif CJK SC", serif;
+    --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    
+    /* 定义交互过渡时间 */
+    --transition-smooth: all 0.25s ease;
 }
 
 body {
     font-family: var(--font-main);
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.5;
-    padding: 50px 60px;
-    font-size: 14px;
-    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    padding: 60px 80px;
+    font-size: 13px; /* 营造 Cargo 的呼吸感和高级感 */
 }
 
+/* --- ✨ 核心修改：全局超链接交互优化 --- */
 a {
     color: inherit;
-    text-decoration: underline;
+    text-decoration: none; /* 彻底去掉默认的下划线 */
     cursor: pointer;
+    transition: var(--transition-smooth); /* 让颜色变化有平滑的渐变过渡感 */
+    display: inline-block; /* 扩大触控和动画的感应区域 */
 }
 
-a:hover {
-    opacity: 0.7;
+/* 鼠标悬停（电脑端）以及 触控点击（iPad/手机端）时的灰色反馈效果 */
+a:hover, 
+a:active {
+    color: #888888; /* 变浅、变灰 */
+    opacity: 0.8;   /* 增加轻微的半透明高级感 */
 }
 
 /* 双栏经典布局 */
 .container {
     display: flex;
-    max-width: 1300px;
+    max-width: 1400px;
     margin: 0 auto;
-    gap: 120px;
+    gap: 160px; /* 两栏之间的留白 */
 }
 
-.left-col { flex: 1.1; }
-.right-col { flex: 0.9; }
+.left-col { flex: 1.2; }
+.right-col { flex: 0.8; }
 
-h1 {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    letter-spacing: 0.5px;
+/* 站点左上角标识 */
+.site-logo {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    letter-spacing: -0.5px;
 }
 
 .subtitle {
-    font-size: 13px;
-    color: #666;
-    margin-top: -25px;
-    margin-bottom: 35px;
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 50px;
 }
 
-.section { margin-bottom: 40px; }
-.year-group { margin-bottom: 30px; }
-.year-label { font-weight: bold; margin-bottom: 8px; }
-.project-list { list-style: none; }
-.project-item { margin-bottom: 8px; }
+.section { margin-bottom: 50px; }
+.year-group { margin-bottom: 35px; }
 
-/* 右栏特定排版 */
-.header-title-block { margin-bottom: 25px; }
-.main-title { font-size: 16px; font-weight: bold; }
+.year-label { 
+    font-family: var(--font-serif);
+    font-size: 14px;
+    font-weight: 400; 
+    margin-bottom: 12px; 
+}
+
+.project-list { list-style: none; }
+.project-item { margin-bottom: 12px; } /* 稍微拉大了一点点列表间距，方便 iPad 触控 */
+
+.project-link {
+    font-size: 14px;
+    text-decoration: none; /* 确保作品列表也没有任何线 */
+}
+
+/* 右栏特定的社论级排版 */
+.header-title-block { margin-bottom: 35px; }
+
+.main-title { 
+    font-family: var(--font-serif);
+    font-size: 18px; 
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
 .chinese-subtext {
-    font-size: 12px;
-    color: #555;
+    font-size: 11px;
+    color: #666;
     display: block;
-    margin-top: 2px;
+    margin-top: 4px;
+    margin-bottom: 2px;
+    letter-spacing: 1px;
+}
+
+.location-text {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-style: italic;
+    color: #333;
 }
 
 .bio-text {
     font-family: var(--font-serif);
     font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: 45px;
+    line-height: 1.7;
+    margin-bottom: 55px;
+    max-width: 380px;
 }
 
-.info-list { list-style: none; margin-bottom: 50px; }
-.info-list li { margin-bottom: 8px; }
-.footer-date { font-top: 100px; color: #000; margin-top: 100px; }
+.info-list { list-style: none; margin-bottom: 60px; }
+.info-list li { margin-bottom: 10px; font-size: 13px; }
+.info-label { color: #000; }
 
-/* Cargo 经典带对角线斜线的正方形占位图 */
+.footer-date { 
+    font-family: var(--font-serif);
+    color: #999; 
+    margin-top: 120px; 
+}
+
+/* 经典对角线占位框 */
 .visual-box {
     width: 100%;
-    max-width: 500px;
+    max-width: 550px;
     aspect-ratio: 1 / 1;
     border: 1px solid var(--border-color);
     position: relative;
-    margin-bottom: 35px;
+    margin-bottom: 40px;
     background-color: #fff;
 }
 
@@ -103,7 +150,7 @@ h1 {
     background: linear-gradient(to top right, transparent calc(50% - 0.5px), var(--border-color) calc(50% - 0.5px), var(--border-color) calc(50% + 0.5px), transparent calc(50% + 0.5px));
 }
 
-/* 动态详情页全屏遮罩样式 */
+/* 动态详情页全屏弹出层样式 */
 .detail-overlay {
     display: none;
     position: fixed;
@@ -111,25 +158,43 @@ h1 {
     background-color: var(--bg-color);
     z-index: 1000;
     overflow-y: auto;
-    padding: 50px 60px;
+    padding: 60px 80px;
 }
 
 .detail-header {
-    max-width: 1000px;
-    margin: 0 auto 35px auto;
+    max-width: 1100px;
+    margin: 0 auto 40px auto;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #eee;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
 }
 
-.detail-content { max-width: 1000px; margin: 0 auto; }
-.detail-text-block { font-family: var(--font-serif); max-width: 750px; }
-.detail-sub-section { border-top: 1px solid var(--border-color); padding-top: 20px; margin-top: 40px; }
-.detail-sub-section h3 { font-size: 14px; margin-bottom: 20px; }
+.back-link {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 14px;
+}
 
-/* 移动端自适应 */
-@media (max-width: 850px) {
-    .container { flex-direction: column; gap: 50px; }
-    body, .detail-overlay { padding: 30px 20px; }
+.detail-content { max-width: 1100px; margin: 0 auto; }
+
+/* 详情弹窗大引言样式 */
+.detail-quote-highlight {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    line-height: 1.5;
+    font-style: italic;
+    margin-bottom: 35px;
+    color: #000;
+}
+
+.detail-text-block { max-width: 800px; margin-bottom: 50px; }
+.detail-sub-section { border-top: 1px solid var(--border-color); padding-top: 25px; margin-top: 50px; }
+.detail-sub-section h3 { font-family: var(--font-serif); font-size: 14px; font-weight: 400; margin-bottom: 25px; }
+
+/* 完美匹配手机移动端自适应 */
+@media (max-width: 900px) {
+    .container { flex-direction: column; gap: 60px; }
+    body, .detail-overlay { padding: 40px 25px; }
+    .site-logo { font-size: 28px; }
 }
