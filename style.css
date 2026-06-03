@@ -218,3 +218,46 @@ a:hover {
     .detail-text-column { width: 100%; position: static; }
     .detail-header { padding-left: 0; padding-right: 0; }
 }
+/* ==========================================================================
+   ✨ 新增：详情页右侧侧边栏项目快捷导航样式（冷淡流派）
+   ========================================================================== */
+.detail-sidebar-nav {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    margin-top: 25px;
+}
+
+.detail-sidebar-nav .nav-year {
+    font-size: 11px;
+    color: #999;
+    font-weight: 500;
+    margin-bottom: 6px;
+    margin-top: 12px;
+    letter-spacing: 0.5px;
+}
+.detail-sidebar-nav .nav-year:first-child { margin-top: 0; }
+
+.detail-sidebar-list {
+    list-style: none;
+}
+
+.detail-sidebar-item {
+    font-size: 13px;
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+/* 当正在查看当前项目时：变成灰色、不可点击、取消hover效果 */
+.detail-sidebar-item.current-active a {
+    color: #bbb !important;
+    cursor: default;
+    pointer-events: none; 
+}
+
+.detail-sidebar-link {
+    color: #000;
+    transition: opacity 0.2s;
+}
+.detail-sidebar-link:hover {
+    opacity: 0.5;
+}
