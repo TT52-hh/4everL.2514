@@ -105,7 +105,7 @@ a:hover {
 
 .chinese-subtext {
     font-size: 12px;
-    color: #666; /* 保持较深一点的灰色 */
+    color: #666; 
     display: block;
     margin-top: 2px;
 }
@@ -130,7 +130,7 @@ a:hover {
 .footer-date { 
     font-size: 13px;
     color: #000; 
-    margin-top: 50px; /* 从原先的100px缩减到50px实现上移 */
+    margin-top: 50px; 
 }
 
 /* 动态详情页全屏弹出层基础样式 */
@@ -144,13 +144,17 @@ a:hover {
     padding: 50px 60px;
 }
 
+/* 🌟 优化后的顶栏样式：完美实现左对齐 */
 .detail-header {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto 35px auto;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #eee;
     padding-bottom: 15px;
+    width: 100%;
+    padding-left: 20px; 
+    padding-right: 20px;
 }
 
 .back-link {
@@ -158,22 +162,22 @@ a:hover {
     font-size: 14px;
 }
 
-/* =======================================================
-   ✨ 终极调校：比例完美的双栏画廊流（电脑端完美复刻 iPad 视觉）
-   ======================================================= */
+/* 🌟 优化后的双栏画廊样式：与顶栏同步保持 20px 边距基准线 */
 .detail-content-wrapper {
     display: flex;
-    gap: 50px;              /* 左右两栏的间距，跟 iPad 保持一致 */
+    gap: 50px;              
     align-items: flex-start;
-    max-width: 1200px;      /* 限制详情页整体最大宽度，防止大屏上散开 */
+    max-width: 1200px;      
     margin: 0 auto;
+    padding-left: 20px;     
+    padding-right: 20px;
 }
 
-/* 左侧放图的区域（关键修正点！） */
+/* 左侧放图的区域 */
 .detail-media-column {
     flex: 1;
     min-width: 320px;
-    max-width: 700px;       /* 🌟 核心：强制限制大屏幕上图片的最大宽度，复刻iPad的精致比例 */
+    max-width: 700px;       
 }
 
 /* 控制两张图片自适应 */
@@ -181,17 +185,17 @@ a:hover {
     width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 35px;    /* 两张图之间的上下留白 */
+    margin-bottom: 35px;    
     border: 1px solid #f5f5f5; 
 }
 
 /* 右侧文字区域：滚动时它会优雅地吸附在右侧固定住 */
 .detail-text-column {
-    width: 260px;           /* 稳固右侧文字栏宽度 */
+    width: 260px;           
     flex-shrink: 0;
     position: -webkit-sticky;
     position: sticky;
-    top: 100px;             /* 往下滚动时，字会清爽地固定在右边 */
+    top: 100px;             
 }
 
 .project-meta-tag {
@@ -202,8 +206,15 @@ a:hover {
     line-height: 1.6;
 }
 
-/* 移动端自适应：只有真正到了手机端，才变成上下堆叠 */
-@media (max-width: 768px) {
-    .detail-content-wrapper { flex-direction: column; gap: 30px; }
+/* 移动端自适应 */
+@media (max-width: 850px) {
+    .container { flex-direction: column; gap: 50px; }
+    body, .detail-overlay { padding: 30px 20px; }
+    .left-col { min-height: auto; }
+    .left-footer-date { margin-top: 20px; padding-top: 0; }
+    
+    /* 移动端自动变成上下堆叠 */
+    .detail-content-wrapper { flex-direction: column; gap: 30px; padding-left: 0; padding-right: 0; }
     .detail-text-column { width: 100%; position: static; }
+    .detail-header { padding-left: 0; padding-right: 0; }
 }
