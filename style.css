@@ -22,7 +22,7 @@ body {
     font-size: 14px;
 }
 
-/* 移除死板的下划线，保持 Cargo 冷淡高级感 */
+/* 移除死板的下划线 */
 a {
     color: inherit;
     text-decoration: none;
@@ -47,11 +47,10 @@ a:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 80vh; /* 撑开垂直高度以放置左下角时间 */
+    min-height: 80vh;
 }
 .right-col { flex: 0.9; }
 
-/* 站点左上角标识 */
 .site-logo {
     font-size: 16px;
     font-weight: 600;
@@ -69,7 +68,6 @@ a:hover {
 .section { margin-bottom: 40px; }
 .year-group { margin-bottom: 30px; }
 
-/* 调整年份字号、颜色，并向右缩进 16px (约1-2个字符) */
 .year-label { 
     font-size: 12px;
     color: #888; 
@@ -86,7 +84,6 @@ a:hover {
     font-weight: 400;
 }
 
-/* 左下角时间微调：灰色，字号略大于右下角 */
 .left-footer-date {
     font-size: 14px;
     color: #888;
@@ -126,7 +123,6 @@ a:hover {
 .info-list { list-style: none; margin-bottom: 50px; }
 .info-list li { margin-bottom: 8px; font-size: 14px; }
 
-/* 调整右侧版权上移，为底部留出放图空间 */
 .footer-date { 
     font-size: 13px;
     color: #000; 
@@ -144,7 +140,6 @@ a:hover {
     padding: 50px 60px;
 }
 
-/* 🌟 优化后的顶栏样式：完美实现左对齐 */
 .detail-header {
     max-width: 1200px;
     margin: 0 auto 35px auto;
@@ -162,10 +157,10 @@ a:hover {
     font-size: 14px;
 }
 
-/* 🌟 优化后的双栏画廊样式：与顶栏同步保持 20px 边距基准线 */
+/* 双栏画廊样式 */
 .detail-content-wrapper {
     display: flex;
-    gap: 50px;              
+    gap: 60px;              
     align-items: flex-start;
     max-width: 1200px;      
     margin: 0 auto;
@@ -180,7 +175,6 @@ a:hover {
     max-width: 700px;       
 }
 
-/* 控制两张图片自适应 */
 .detail-media-column img {
     width: 100%;
     height: auto;
@@ -189,21 +183,63 @@ a:hover {
     border: 1px solid #f5f5f5; 
 }
 
-/* 右侧文字区域：滚动时它会优雅地吸附在右侧固定住 */
+/* 右侧文字区域：吸附固定 */
 .detail-text-column {
-    width: 260px;           
+    width: 280px; /* 稍微加宽一点点以容纳长标题 */
     flex-shrink: 0;
     position: -webkit-sticky;
     position: sticky;
-    top: 100px;             
+    top: 50px;             
 }
 
 .project-meta-tag {
-    border-top: 1px solid #000;
+    border-top: 1px solid #eee;
     padding-top: 15px;
     font-size: 12px;
     color: #999;
     line-height: 1.6;
+    margin-bottom: 35px; /* 为下方快捷导航留出空隙 */
+}
+
+/* ✨ ✨ ✨ 新增：详情页右侧快捷项目导航样式 ✨ ✨ ✨ */
+.detail-sidebar-nav {
+    border-top: 1px solid #000;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.detail-sidebar-nav .nav-year {
+    font-size: 11px;
+    color: #999;
+    font-weight: 400;
+    margin-bottom: 8px;
+    margin-top: 15px;
+}
+.detail-sidebar-nav .nav-year:first-child { margin-top: 0; }
+
+.detail-sidebar-list {
+    list-style: none;
+}
+
+.detail-sidebar-item {
+    font-size: 13px;
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+/* 正在查看的项目：灰色、无下划线、不可点击 */
+.detail-sidebar-item.current-active {
+    color: #bbb !important;
+    cursor: default;
+    pointer-events: none; /* 彻底禁用点击 */
+}
+
+.detail-sidebar-link {
+    color: #000;
+    transition: opacity 0.2s;
+}
+.detail-sidebar-link:hover {
+    opacity: 0.5;
 }
 
 /* 移动端自适应 */
@@ -213,7 +249,6 @@ a:hover {
     .left-col { min-height: auto; }
     .left-footer-date { margin-top: 20px; padding-top: 0; }
     
-    /* 移动端自动变成上下堆叠 */
     .detail-content-wrapper { flex-direction: column; gap: 30px; padding-left: 0; padding-right: 0; }
     .detail-text-column { width: 100%; position: static; }
     .detail-header { padding-left: 0; padding-right: 0; }
