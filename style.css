@@ -133,25 +133,7 @@ a:hover {
     margin-top: 50px; /* 从原先的100px缩减到50px实现上移 */
 }
 
-/* 经典对角线占位框 */
-.visual-box {
-    width: 100%;
-    max-width: 500px;
-    aspect-ratio: 1 / 1;
-    border: 1px solid var(--border-color);
-    position: relative;
-    margin-bottom: 35px;
-    background-color: #fff;
-}
-
-.visual-box::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to top right, transparent calc(50% - 0.5px), var(--border-color) calc(50% - 0.5px), var(--border-color) calc(50% + 0.5px), transparent calc(50% + 0.5px));
-}
-
-/* 动态详情页全屏弹出层样式 */
+/* 动态详情页全屏弹出层基础样式 */
 .detail-overlay {
     display: none;
     position: fixed;
@@ -163,7 +145,7 @@ a:hover {
 }
 
 .detail-header {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto 35px auto;
     display: flex;
     justify-content: space-between;
@@ -176,10 +158,50 @@ a:hover {
     font-size: 14px;
 }
 
-.detail-content { max-width: 1000px; margin: 0 auto; }
-.detail-text-block { max-width: 750px; margin-bottom: 45px; }
-.detail-sub-section { border-top: 1px solid var(--border-color); padding-top: 20px; margin-top: 40px; }
-.detail-sub-section h3 { font-size: 14px; font-weight: 500; margin-bottom: 20px; }
+/* =======================================================
+   ✨ 核心升级：详情页画廊双栏完美瀑布流排版 
+   ======================================================= */
+.detail-content-wrapper {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* 手机端自动变成上下堆叠 */
+}
+
+/* 左侧放图的区域 */
+.detail-media-column {
+    flex: 1;
+    min-width: 320px;
+    max-width: 700px;
+}
+
+/* 控制你裁好的两张图片：完美自适应宽度，并且自带优雅的上下间距 */
+.detail-media-column img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 35px; /* 两张图之间的呼吸留白 */
+    border: 1px solid #f5f5f5; /* 给白底网格图加一层若有若无的精致边框线 */
+}
+
+/* 右侧文字区域：滚动时它会优雅地吸附在右侧固定住，非常高级 */
+.detail-text-column {
+    width: 260px;
+    flex-shrink: 0;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 100px; 
+}
+
+.project-meta-tag {
+    border-top: 1px solid #000;
+    padding-top: 15px;
+    font-size: 12px;
+    color: #999;
+    line-height: 1.6;
+}
 
 /* 移动端自适应 */
 @media (max-width: 850px) {
@@ -187,4 +209,8 @@ a:hover {
     body, .detail-overlay { padding: 30px 20px; }
     .left-col { min-height: auto; }
     .left-footer-date { margin-top: 20px; padding-top: 0; }
+    
+    /* 弹窗内容在手机端自动转换为上下老实排布 */
+    .detail-content-wrapper { flex-direction: column; gap: 30px; }
+    .detail-text-column { width: 100%; position: static; }
 }
