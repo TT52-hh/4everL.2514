@@ -4,77 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TT Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="container">
-        
         <div class="left-col">
-            <h1 class="site-logo">TT</h1>
-            <div class="subtitle">Portfolio for Neo</div>
-            
-            <div class="section">
-                <div class="year-group">
-                    <div class="year-label">2026</div>
-                    <ul class="project-list">
-                        <li class="project-item">
-                            <a class="project-link open-project" 
-                               data-title="小红书自媒体运营" 
-                               data-desc="AI视觉叙事与社交媒体传播策略研究。">小红书自媒体运营</a >
-                        </li>
-                        <li class="project-item">
-                            <a class="project-link open-project" 
-                               data-title="AI视觉叙事项目" 
-                               data-desc="基于扩散模型与生成式AI的实验性图像与叙事工作流。">AI视觉叙事项目</a >
-                        </li>
-                        <li class="project-item">
-                            <a class="project-link open-project" 
-                               data-title="数字服务类APP“观寺”UI设计" 
-                               data-desc="传统与现代结合的数字服务类移动应用端界面设计。">数字服务类APP“观寺”UI设计</a >
-                        </li>
-                        <li class="project-item">
-                            <a class="project-link open-project" 
-                               data-title="传统文化可视化表达" 
-                               data-desc="非物质文化遗产与古典美学的数字化视觉重构表达。">传统文化可视化表达</a >
-                        </li>
-                    </ul>
+            <div>
+                <h1 class="site-logo">TT Portfolio</h1>
+                <p class="subtitle">Selected Works</p>
+                
+                <div class="section">
+                    <div class="year-group">
+                        <div class="year-label">2026</div>
+                        <ul class="project-list">
+                            <li class="project-item"><a href="#" class="project-link" data-project-id="xiaohongshu">小红书自媒体运营</a></li>
+                            <li class="project-item"><a href="#" class="project-link" data-project-id="ai-narrative">AI视觉叙事项目</a></li>
+                            <li class="project-item"><a href="#" class="project-link" data-project-id="guansi-app">数字服务类APP "观寺" UI设计</a></li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="year-group">
-                    <div class="year-label">2025</div>
-                    <ul class="project-list">
-                        <li class="project-item">
-                            <a class="project-link open-project" 
-                               data-title="原创字体设计font-youth" 
-                               data-desc="商业艺术字形实验性推演与字库孵化。"
-                               data-imgs="images/font-youth-header.jpg,images/font-youth-grid.png">原创字体设计font-youth</a >
-                        </li>
-                        <li class="project-item">
-                            <a class="project-link open-project" 
-                               data-title="线下视觉设计实践" 
-                               data-desc="实体多维空间的视觉导视系统与海报落地实践。">线下视觉设计实践</a >
-                        </li>
-                    </ul>
+                <div class="section">
+                    <div class="year-group">
+                        <div class="year-label">2025</div>
+                        <ul class="project-list">
+                            <li class="project-item"><a href="#" class="project-link" data-project-id="font-youth">原创字体设计font-youth</a></li>
+                            <li class="project-item"><a href="#" class="project-link" data-project-id="offline-design">线下视觉设计实践</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <div class="left-footer-date">May 27, 2026</div>
+            <div class="left-footer-date">©2026</div>
         </div>
 
         <div class="right-col">
             <div class="header-title-block">
-                <div class="main-title">TT® Digital Media Artist</div>
-                <span class="chinese-subtext">数字媒体艺术</span>
-                <div class="location-text">based in Guangzhou</div>
+                <h2 class="main-title">唐 婷 <span class="chinese-subtext">Tang Ting</span></h2>
+                <p class="location-text">Guangzhou, China</p>
             </div>
 
-            <div class="bio-text">
-                Digital media portfolio focused on human-centered UI design, traditional culture visualization, and digital content creation.
-            </div>
+            <p class="bio-text">
+                专注于视觉叙事与数字美学的探索者。致力于将传统文化图形进行现代化、实验性的解构表达，同时通过自媒体与AI技术拓宽视觉艺术的传播边界。
+            </p>
 
             <ul class="info-list">
                 <li><span class="info-label">TEL: 15626696080</span></li>
@@ -83,34 +56,55 @@
                 <li><a href="https://instagram.com/y0u.tt" target="_blank"><span class="info-label">Instagram: </span>y0u.tt</a></li>
             </ul>
 
-            <div class="footer-date">
-                © 2026
-            </div>
+            <div class="footer-date">Last updated: June 2026</div>
         </div>
-
     </div>
 
-    <div class="detail-overlay" id="projectDetailOverlay">
+    <div id="projectDetailOverlay" class="detail-overlay">
         <div class="detail-header">
-            <div>
-                <a href="#" class="back-link" id="closeDetailBtn">← TT Portfolio</a >
-                <span id="detailProjectMeta" style="margin-left: 15px; font-weight: 500; color: #000;"></span>
-            </div>
+            <a href="#" id="logoHomeBtn" class="back-link">— TT Portfolio</a>
+            <a href="#" id="closeDetailBtn" class="back-link">CLOSE ✕</a>
         </div>
-        
+
         <div class="detail-content-wrapper">
-            <div class="detail-media-column" id="detailImagesBox"></div>
-            
+            <div id="detailImagesBox" class="detail-media-column">
+                </div>
+
             <div class="detail-text-column">
-                <h2 id="detailProjectTitle" style="font-size: 16px; font-weight: 500; margin-bottom: 12px;"></h2>
-                <p id="detailProjectDesc" style="font-size: 13px; color: #666; line-height: 1.7; margin-bottom: 25px;"></p >
+                <h2 id="detailTitle" class="main-title" style="margin-bottom:10px;">项目加载中...</h2>
+                <p id="detailIntro" class="bio-text" style="font-size:13px; color:#555; margin-bottom:30px;">请稍候</p>
                 
                 <div class="project-meta-tag">
-                    <p style="color:#000; font-weight:500; margin-bottom: 4px;">PROJECT INFO</p >
-                    <p>Typeface Design / Experimental</p >
-                    <p>Created in Dec 2025</p >
+                    <p style="font-weight:500; color:#000; margin-bottom:5px;">PROJECT INFO</p>
+                    <p id="detailType">Loading...</p>
+                    <p id="detailDate">Loading...</p>
                 </div>
-            </div>
+
+                <div class="detail-sidebar-nav">
+                    <div class="nav-year">2026</div>
+                    <ul class="detail-sidebar-list">
+                        <li class="detail-sidebar-item" data-project-id="xiaohongshu">
+                            <a href="#" class="detail-sidebar-link" onclick="renderProjectDetail('xiaohongshu'); return false;">小红书自媒体运营</a>
+                        </li>
+                        <li class="detail-sidebar-item" data-project-id="ai-narrative">
+                            <a href="#" class="detail-sidebar-link" onclick="renderProjectDetail('ai-narrative'); return false;">AI视觉叙事项目</a>
+                        </li>
+                        <li class="detail-sidebar-item" data-project-id="guansi-app">
+                            <a href="#" class="detail-sidebar-link" onclick="renderProjectDetail('guansi-app'); return false;">数字服务类APP "观寺" UI设计</a>
+                        </li>
+                    </ul>
+
+                    <div class="nav-year">2025</div>
+                    <ul class="detail-sidebar-list">
+                        <li class="detail-sidebar-item" data-project-id="font-youth">
+                            <a href="#" class="detail-sidebar-link" onclick="renderProjectDetail('font-youth'); return false;">原创字体设计font-youth</a>
+                        </li>
+                        <li class="detail-sidebar-item" data-project-id="offline-design">
+                            <a href="#" class="detail-sidebar-link" onclick="renderProjectDetail('offline-design'); return false;">线下视觉设计实践</a>
+                        </li>
+                    </ul>
+                </div>
+                </div>
         </div>
     </div>
 
