@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         detailProjectMeta.textContent = title;
         detailProjectTitle.textContent = title;
-        detailProjectDesc.textContent = desc;
+        detailProjectDesc.innerHTML = desc;
         
         // 清空盒子，重新吐出图片
         detailImagesBox.innerHTML = '';
