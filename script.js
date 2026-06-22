@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const imgList = imgsData.split(','); // 拆分相对路径
             imgList.forEach(url => {
                 const imgElement = document.createElement('img');
-                imgElement.src = url.trim(); // 保持 images/font-youth-grid.png 原汁原味不变形
+                imgElement.src = url.trim(); // 保持 images/font-youth-grid.png 原汁原味
                 detailImagesBox.appendChild(imgElement);
             });
         } else {
@@ -40,13 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // 🌟 自动化魔法：实时复印首页的菜单列表，并传入当前的标题用来“染灰不可点”
         generateSidebarMenu(title);
 
-        // 切换项目的时候，自动把弹窗的滚动条抽回最顶部
+        // 切换项目的时候，自动把弹窗的滚动条抽回最顶部，方便看新项目
         projectOverlay.scrollTop = 0;
     }
 
     // 自动化“复印”首页侧边栏菜单的函数
     function generateSidebarMenu(currentTitle) {
-        sidebarNav.innerHTML = ''; // 擦干净旧的
+        sidebarNav.innerHTML = ''; // 先擦干净旧的
         
         // 精准抓取你最新的 index.html 左栏里的年份分组
         const yearGroups = document.querySelectorAll('.left-col .year-group');
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const a = document.createElement('a');
                 a.href = '#';
                 a.className = 'detail-sidebar-link';
-                a.textContent = link.textContent; // 保持原本的文字内容，如“原创设计字体孵化”
+                a.textContent = link.textContent; // 保持原本的文字内容
                 
                 // 给生成的侧边栏按钮绑定原地无缝切换的点击事件
                 a.addEventListener('click', (e) => {
@@ -104,14 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 监听关闭按钮
+    // 监听关闭按钮：只纯粹关闭弹窗，大主页绝对不会跟着乱滚
     closeDetailBtn.addEventListener('click', (e) => {
         e.preventDefault();
         projectOverlay.style.display = 'none';
-    });
-
-    // 🌟 朋友建议的交互：点击左上角的“← TT Portfolio”不仅能关闭弹窗，还会顺滑滚回首页最顶端
-    closeDetailBtn.addEventListener('click', (e) => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });
