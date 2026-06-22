@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         detailProjectMeta.textContent = title;
         detailProjectTitle.textContent = title;
-        detailProjectDesc.innerHTML = desc;
+        detailProjectDesc.innerHTML = desc; // 🌟 确保用 innerHTML 识别换行
         
         // 清空盒子，重新吐出图片
         detailImagesBox.innerHTML = '';
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const imgList = imgsData.split(','); // 拆分相对路径
             imgList.forEach(url => {
                 const imgElement = document.createElement('img');
-                imgElement.src = url.trim(); // 保持 images/font-youth-grid.png 原汁原味
+                imgElement.src = url.trim(); // 保持相对路径原汁原味
                 detailImagesBox.appendChild(imgElement);
             });
         } else {
