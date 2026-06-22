@@ -6,7 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailProjectDesc = document.getElementById('detailProjectDesc');
     const detailImagesBox = document.getElementById('detailImagesBox');
 
-    // 🌟 动态在详情页右侧文字栏下方塞入一个“快捷导航盒子”
+    // 🌟 抓取右下角用来放 PROJECT INFO 的容器
+    const metaTagContainer = document.querySelector('.project-meta-tag');
+
+    // 动态在详情页右侧文字栏下方塞入一个“快捷导航盒子”
     const detailTextColumn = document.querySelector('.detail-text-column');
     const sidebarNav = document.createElement('div');
     sidebarNav.className = 'detail-sidebar-nav';
@@ -16,62 +19,69 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderProject(clickedLink) {
         const title = clickedLink.getAttribute('data-title');
         const desc = clickedLink.getAttribute('data-desc');
-        const imgsData = clickedLink.getAttribute('data-imgs'); // 完美读取你原本的相对图片路径
+        const imgsData = clickedLink.getAttribute('data-imgs'); 
+        
+        // 🌟 动态读取 HTML 上的新标签，如果没写就给个克制的默认值
+        const type = clickedLink.getAttribute('data-type') || 'Digital Media / Art';
+        const date = clickedLink.getAttribute('data-date') || '2026';
         
         detailProjectMeta.textContent = title;
         detailProjectTitle.textContent = title;
-        detailProjectDesc.innerHTML = desc; // 🌟 确保用 innerHTML 识别换行
+        detailProjectDesc.innerHTML = desc; 
+        
+        // 🌟 动态刷新右下角的文字内容
+        if (metaTagContainer) {
+            metaTagContainer.innerHTML = `
+                <p style="color:#000; font-weight:500; margin-bottom: 4px;">PROJECT INFO</p>
+                <p>${type}</p>
+                <p>${date}</p>
+            `;
+        }
         
         // 清空盒子，重新吐出图片
         detailImagesBox.innerHTML = '';
         
         if (imgsData) {
-            const imgList = imgsData.split(','); // 拆分相对路径
+            const imgList = imgsData.split(','); 
             imgList.forEach(url => {
                 const imgElement = document.createElement('img');
-                imgElement.src = url.trim(); // 保持相对路径原汁原味
+                imgElement.src = url.trim(); 
                 detailImagesBox.appendChild(imgElement);
             });
         } else {
-            // 如果其他项目在 index.html 里没有写 data-imgs 属性，就显示整理中提示
             detailImagesBox.innerHTML = '<div style="font-size:13px; color:#999; padding-top:20px;">[作品图片正在整理上传中...]</div>';
         }
 
-        // 🌟 自动化魔法：实时复印首页的菜单列表，并传入当前的标题用来“染灰不可点”
+        // 自动化魔法：实时复印首页的菜单列表
         generateSidebarMenu(title);
 
-        // 切换项目的时候，自动把弹窗的滚动条抽回最顶部，方便看新项目
+        // 切换项目的时候，自动把弹窗的滚动条抽回最顶部
         projectOverlay.scrollTop = 0;
     }
 
     // 自动化“复印”首页侧边栏菜单的函数
     function generateSidebarMenu(currentTitle) {
-        sidebarNav.innerHTML = ''; // 先擦干净旧的
+        sidebarNav.innerHTML = ''; 
         
-        // 精准抓取你最新的 index.html 左栏里的年份分组
         const yearGroups = document.querySelectorAll('.left-col .year-group');
         
         yearGroups.forEach(group => {
             const yearLabel = group.querySelector('.year-label').textContent;
             
-            // 复制出年份标头
             const navYear = document.createElement('div');
             navYear.className = 'nav-year';
             navYear.textContent = yearLabel;
             sidebarNav.appendChild(navYear);
             
-            // 创建列表
             const ul = document.createElement('ul');
             ul.className = 'detail-sidebar-list';
             
-            // 抓取这个年份底下的所有 open-project 链接
             const links = group.querySelectorAll('.open-project');
             links.forEach(link => {
                 const projectTitle = link.getAttribute('data-title');
                 const li = document.createElement('li');
                 li.className = 'detail-sidebar-item';
                 
-                // 如果侧边栏里的项目名字和当前正在看的项目名字一模一样，就染成灰色激活态
                 if (projectTitle === currentTitle) {
                     li.classList.add('current-active');
                 }
@@ -79,12 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const a = document.createElement('a');
                 a.href = '#';
                 a.className = 'detail-sidebar-link';
-                a.textContent = link.textContent; // 保持原本的文字内容
+                a.textContent = link.textContent; 
                 
-                // 给生成的侧边栏按钮绑定原地无缝切换的点击事件
                 a.addEventListener('click', (e) => {
                     e.preventDefault();
-                    renderProject(link); // 把对应的节点扔进去重新渲染
+                    renderProject(link); 
                 });
                 
                 li.appendChild(a);
@@ -104,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 监听关闭按钮：只纯粹关闭弹窗，大主页绝对不会跟着乱滚
+    // 监听关闭按钮
     closeDetailBtn.addEventListener('click', (e) => {
         e.preventDefault();
         projectOverlay.style.display = 'none';
