@@ -186,7 +186,7 @@ a:hover {
     width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 24px;    /* 间距已改为 24px */
+    margin-bottom: 16px;
     border: 1px solid #f5f5f5; 
 }
 
