@@ -145,33 +145,37 @@ a:hover {
     padding: 50px 60px;
 }
 
-/* 🌟 优化后的顶栏样式：完美实现左对齐 */
+/* 🌟 优化后的顶栏样式：完美吸顶固定、消除多余留白、放大字号 */
 .detail-header {
-    max-width: 1200px;
-    margin: 0 auto 35px auto;
+    position: fixed;            /* 绝对固定吸顶，不随页面滚动 */
+    top: 0;
+    left: 0;
+    width: 100%;                /* 撑满屏幕宽度 */
+    background-color: var(--bg-color); /* 确保背景是纯白，不透明 */
+    z-index: 1001;              /* 确保永远层级最高，不被大图遮挡 */
+    padding: 20px 60px;         /* 上下留白压缩到 20px，左右和你的大图对齐保持 60px */
+    border-bottom: 1px solid #000; /* 干净的黑线底边 */
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 15px;
-    width: 100%;
-    padding-left: 20px; 
-    padding-right: 20px;
+    align-items: center;
 }
 
+/* 放大左侧的返回键 */
 .back-link {
+    font-size: 16px;            /* 字号从 14px 放大到 16px */
     font-weight: 500;
-    font-size: 14px;
 }
 
 /* 🌟 优化后的双栏画廊样式：与顶栏同步保持 20px 边距基准线 */
 .detail-content-wrapper {
     display: flex;
-    justify-content: space-between; /* 撑开两端，图片靠左，文字靠极右 */
-    align-items: flex-start;       /* 确保顶部对齐 */
-    gap: 60px;                     /* 两栏之间的间距 */
-    padding: 40px 60px 80px 60px;  /* 四周留白，保持高级呼吸感 */
+    justify-content: space-between;
+    align-items: flex-start;       /* 严格顶部对齐 */
+    gap: 60px;
+    padding: 15px 60px 80px 60px;  /* 顶部的 padding 从 40px 狠削到 15px，让大图和文字整体往上移动 */
     width: 100%;
-    max-width: 100%;               /* 允许利用整个屏幕宽度 */
+    max-width: 100%;
+    margin-top: 65px;              /* 刚好卡死在 Header 下方，防止内容被导航栏遮挡 */
 }
 
 /* 左侧媒体/图片列：解除 700px 限制，狠狠放大 */
@@ -194,12 +198,12 @@ a:hover {
 
 /* 右侧文字区域：固定在极右侧，顶部对齐不滚动 */
 .detail-text-column {
-    width: 320px;                  /* 精致克制的文字宽度，方便阅读 */
+    width: 320px;
     flex-shrink: 0;                
     position: sticky;
-    top: 40px;                     /* 距离详情页顶部的距离，实现与大图完美顶对齐 */
-    max-height: calc(100vh - 100px);
-    overflow-y: auto;              /* 如果文字超长，允许文字栏内部单独滚动 */
+    top: 85px;                     /* ✨ 核心修正：距离浏览器顶部的绝对距离，让它和图片顶沿在一个水平线上死死钉住 */
+    max-height: calc(100vh - 120px); /* 限制文字区域高度 */
+    overflow-y: auto;              /* 仅允许文字多时在内部悄悄滚动，不带动整个右栏乱晃 */
 }
 
 /* 隐藏右侧文字栏死板的滚动条，保持极简 */
