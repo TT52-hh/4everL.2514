@@ -166,38 +166,46 @@ a:hover {
 /* 🌟 优化后的双栏画廊样式：与顶栏同步保持 20px 边距基准线 */
 .detail-content-wrapper {
     display: flex;
-    gap: 50px;              
-    align-items: flex-start;
-    max-width: 1200px;      
-    margin: 0 auto;
-    padding-left: 20px;     
-    padding-right: 20px;
+    justify-content: space-between; /* 撑开两端，图片靠左，文字靠极右 */
+    align-items: flex-start;       /* 确保顶部对齐 */
+    gap: 60px;                     /* 两栏之间的间距 */
+    padding: 40px 60px 80px 60px;  /* 四周留白，保持高级呼吸感 */
+    width: 100%;
+    max-width: 100%;               /* 允许利用整个屏幕宽度 */
 }
 
-/* 左侧放图的区域 */
+/* 左侧媒体/图片列：解除 700px 限制，狠狠放大 */
 .detail-media-column {
-    flex: 1;
-    min-width: 320px;
-    max-width: 700px;       
+    flex: 1;                       
+    display: flex;
+    flex-direction: column;
+    max-width: calc(100% - 380px); /* 动态计算：总宽减去右侧文字宽度和间距 */
 }
 
-/* 控制详情页媒体文件（图片与视频）自适应与间距 */
+/* 让图片和未来加入的视频无缝适配大图流 */
 .detail-media-column img,
 .detail-media-column video {
     width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 12px;           /* 保持你刚才满意的 12px 极致紧凑间距 */
     border: 1px solid #f5f5f5; 
 }
 
-/* 右侧文字区域：滚动时它会优雅地吸附在右侧固定住 */
+/* 右侧文字区域：固定在极右侧，顶部对齐不滚动 */
 .detail-text-column {
-    width: 260px;           
-    flex-shrink: 0;
-    position: -webkit-sticky;
+    width: 320px;                  /* 精致克制的文字宽度，方便阅读 */
+    flex-shrink: 0;                
     position: sticky;
-    top: 100px;             
+    top: 40px;                     /* 距离详情页顶部的距离，实现与大图完美顶对齐 */
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;              /* 如果文字超长，允许文字栏内部单独滚动 */
+}
+
+/* 隐藏右侧文字栏死板的滚动条，保持极简 */
+.detail-text-column::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
 
 .project-meta-tag {
