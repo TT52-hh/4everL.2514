@@ -53,7 +53,8 @@ a:hover {
 
 /* 站点左上角标识 */
 .site-logo {
-    font-size: 16px;
+    font-size: 45px;
+    color: rgb(31, 189, 229);
     font-weight: 600;
     margin-bottom: 25px;
     letter-spacing: -0.2px;
