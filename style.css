@@ -148,24 +148,35 @@ a:hover {
     padding: 0;          /* 清空外层 padding，全权交给内部容器接管 */
 }
 
-/* 🌟 优化后的顶栏样式：完美吸顶固定、消除多余留白、放大字号 */
+/* 🌟 优化后的顶栏样式：完美吸顶，且底边线不超出内容边界 */
 .detail-header {
-    position: fixed;            /* 绝对固定吸顶，不随页面滚动 */
+    position: fixed;            
     top: 0;
     left: 0;
-    width: 100%;                /* 撑满屏幕宽度 */
-    background-color: var(--bg-color); /* 确保背景是纯白，不透明 */
-    z-index: 1001;              /* 确保永远层级最高，不被大图遮挡 */
-    padding: 20px 60px;         /* 上下留白压缩到 20px，左右和你的大图对齐保持 60px */
-    border-bottom: 1px solid #000; /* 干净的黑线底边 */
+    width: 100%;                
+    background-color: var(--bg-color); 
+    z-index: 1001;              
+    padding: 20px 60px;         /* 保持 60px 的左右内边距 */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* 👈 删除了原本粗暴的 border-bottom */
+}
+
+/* ✨ 核心魔法：用伪元素画一条左右各留出 60px、颜色高级的浅灰色底边线 */
+.detail-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 60px;                 /* 左边缩进 60px，完美对齐图片左沿 */
+    right: 60px;                /* 右边缩进 60px，完美对齐文字右沿 */
+    height: 1px;
+    background-color: #eee;     /* 变回你原本喜欢的、克制的浅灰色 */
 }
 
 /* 放大左侧的返回键 */
 .back-link {
-    font-size: 16px;            /* 字号从 14px 放大到 16px */
+    font-size: 16px;            
     font-weight: 500;
 }
 
@@ -203,17 +214,20 @@ a:hover {
     border: 1px solid #f5f5f5; 
 }
 
-/* 右侧文字区域：固定在极右侧，顶部对齐不滚动 */
+/* 右侧文字区域：精准锁死，完美对齐首图顶沿 */
 .detail-text-column {
     width: 320px;
     flex-shrink: 0;                
     position: sticky;
-    top: 85px;                     /* ✨ 核心修正：距离浏览器顶部的绝对距离，让它和图片顶沿在一个水平线上死死钉住 */
-    max-height: calc(100vh - 120px); /* 限制文字区域高度 */
-    overflow-y: auto;              /* 仅允许文字多时在内部悄悄滚动，不带动整个右栏乱晃 */
+    
+    /* ✨ 核心修正：由于滚动容器变了，这里改成 25px，刚好匹配外部容器的 padding-top */
+    top: 25px;                     
+    
+    max-height: calc(100vh - 120px); 
+    overflow-y: auto;              
 }
 
-/* 隐藏右侧文字栏死板的滚动条，保持极简 */
+/* 隐藏右侧文字栏死板的滚动条 */
 .detail-text-column::-webkit-scrollbar {
     width: 0px;
     background: transparent;
