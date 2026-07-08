@@ -21,18 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const desc = clickedLink.getAttribute('data-desc');
         const imgsData = clickedLink.getAttribute('data-imgs'); 
         
-        // 🌟 动态读取 HTML 上的新标签，如果没写就给个克制的默认值
-        const type = clickedLink.getAttribute('data-type') || 'Digital Media / Art';
+        // 读取 HTML 上面的新标签数据，如果没写就给个克制的中文/数字兜底
+        const type = clickedLink.getAttribute('data-type') || '数字媒体 / 艺术';
         const date = clickedLink.getAttribute('data-date') || '2026';
         
         detailProjectMeta.textContent = title;
         detailProjectTitle.textContent = title;
-        detailProjectDesc.innerHTML = desc; 
-        
-        // 🌟 动态刷新右下角的文字内容
+        detailProjectDesc.innerHTML = desc || ''; 
+
+        // 🌟 核心汉化调整：消灭多余英文，保持极其干净的冷淡中文版式
         if (metaTagContainer) {
             metaTagContainer.innerHTML = `
-                <p style="color:#000; font-weight:500; margin-bottom: 4px;">PROJECT INFO</p>
+                <p style="color:#000; font-weight:500; margin-bottom: 4px;">项目信息</p>
                 <p>${type}</p>
                 <p>${date}</p>
             `;
