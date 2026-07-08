@@ -243,19 +243,68 @@ a:hover {
 
 /* 移动端自适应 */
 @media (max-width: 850px) {
-    .container { flex-direction: column; gap: 50px; }
-    body, .detail-overlay { padding: 30px 20px; }
-    .left-col { min-height: auto; }
-    .left-footer-date { margin-top: 20px; padding-top: 0; }
+    /* 首页两栏在手机端变成上下堆叠 */
+    .container { 
+        flex-direction: column; 
+        gap: 50px; 
+    }
     
-    /* 移动端自动变成上下堆叠 */
-    .detail-content-wrapper { flex-direction: column; gap: 30px; padding-left: 0; padding-right: 0; }
-    .detail-text-column { width: 100%; position: static; }
-    .detail-header { padding-left: 0; padding-right: 0; }
+    body { 
+        padding: 30px 20px; 
+    }
+    
+    .left-col { 
+        min-height: auto; 
+    }
+    
+    .left-footer-date { 
+        margin-top: 20px; 
+        padding-top: 0; 
+    }
+    
+    /* 🌟 详情页弹窗核心修复：在手机上恢复全局滚动，不再死锁屏幕 */
+    .detail-overlay { 
+        padding: 0; 
+        overflow-y: auto !important;  /* 强行恢复手机浏览器的丝滑上下滑动 */
+        height: 100vh;
+        width: 100vw;
+    }
+    
+    /* 🌟 顶栏线重置：手机端变窄，间距缩小 */
+    .detail-header { 
+        padding: 15px 20px;          /* 手机端左右留白缩到 20px */
+    }
+    .detail-header::after {
+        left: 20px;                  /* 线条两端精准贴齐手机边缘 */
+        right: 20px;
+    }
+    
+    /* 🌟 双栏内容：在手机端解除高度限制，变成上下大图铺满逻辑 */
+    .detail-content-wrapper { 
+        flex-direction: column; 
+        gap: 30px; 
+        padding: 20px 20px 60px 20px; 
+        margin-top: 50px;            /* 留出手机端顶栏高度 */
+        height: auto !important;     /* 核心：取消电脑端卡死高度的限制 */
+        overflow-y: visible !important; /* 核心：不需要单独的容器滚动 */
+    }
+    
+    /* 左侧图片列在手机上 100% 满宽展示 */
+    .detail-media-column {
+        max-width: 100% !important;
+    }
+    
+    /* 右侧文字在手机上恢复到下方，宽度变满 */
+    .detail-text-column { 
+        width: 100% !important; 
+        position: static !important; /* 核心：在手机上解除 sticky 固定，让它乖乖排在图片下面 */
+        max-height: none !important;
+        overflow-y: visible !important;
+    }
 }
 
 /* ==========================================================================
-   ✨ 新增：详情页右侧侧边栏项目快捷导航样式（冷淡流派）
+   ✨ 完美保留：详情页右侧侧边栏项目快捷导航样式（冷淡流派）
    ========================================================================== */
 .detail-sidebar-nav {
     border-top: 1px solid #eee;
