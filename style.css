@@ -236,9 +236,9 @@ a:hover {
 .project-meta-tag {
     border-top: 1px solid #000;
     padding-top: 15px;
-    font-size: 12px;
-    color: #999;
-    line-height: 1.6;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.8;
 }
 
 /* 移动端自适应 */
