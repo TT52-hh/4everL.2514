@@ -148,7 +148,7 @@ a:hover {
     padding: 0;          /* 清空外层 padding，全权交给内部容器接管 */
 }
 
-/* 🌟 优化后的顶栏样式：完美吸顶，且底边线不超出内容边界 */
+/* 🌟 优化后的顶栏样式：完美吸顶固定、消除多余留白 */
 .detail-header {
     position: fixed;            
     top: 0;
@@ -156,22 +156,22 @@ a:hover {
     width: 100%;                
     background-color: var(--bg-color); 
     z-index: 1001;              
-    padding: 20px 60px;         /* 保持 60px 的左右内边距 */
+    padding: 20px 60px;         /* 保持 60px 的左右内边距，和大图流对齐 */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* 👈 删除了原本粗暴的 border-bottom */
+    /* 👈 删除了原本粗暴的整个底边 border */
 }
 
-/* ✨ 核心魔法：用伪元素画一条左右各留出 60px、颜色高级的浅灰色底边线 */
+/* ✨ 核心魔法：用伪元素画一条左右各缩进 60px 的浅灰色底边线，完美解决你红框圈出来的越界问题 */
 .detail-header::after {
     content: "";
     position: absolute;
     bottom: 0;
-    left: 60px;                 /* 左边缩进 60px，完美对齐图片左沿 */
-    right: 60px;                /* 右边缩进 60px，完美对齐文字右沿 */
+    left: 60px;                 /* 左边缩进 60px，刚好对齐大图左边缘 */
+    right: 60px;                /* 右边缩进 60px，刚好对齐文字右边缘 */
     height: 1px;
-    background-color: #eee;     /* 变回你原本喜欢的、克制的浅灰色 */
+    background-color: #eee;     /* 变回你原本喜欢的、克制且高级的浅灰色 */
 }
 
 /* 放大左侧的返回键 */
@@ -220,8 +220,8 @@ a:hover {
     flex-shrink: 0;                
     position: sticky;
     
-    /* ✨ 核心修正：由于滚动容器变了，这里改成 25px，刚好匹配外部容器的 padding-top */
-    top: 25px;                     
+    /* ✨ 核心修正：由于上一级容器已经带有 padding，这里改成 0 就能让它和大图顶沿严丝合缝对齐 */
+    top: 0;                     
     
     max-height: calc(100vh - 120px); 
     overflow-y: auto;              
