@@ -22,7 +22,7 @@ body {
     font-size: 14px;
 }
 
-/* 移除死板的下划线，保持 Cargo 冷淡高级感 */
+/* 移除死板下划线 */
 a {
     color: inherit;
     text-decoration: none;
@@ -47,17 +47,25 @@ a:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 80vh; /* 撑开垂直高度以放置左下角时间 */
+    min-height: 80vh; 
 }
 .right-col { flex: 0.9; }
 
 /* 站点左上角标识 */
 .site-logo {
     font-size: 45px;
-    color: rgb(31, 189, 229);
     font-weight: 600;
     margin-bottom: 25px;
     letter-spacing: -0.2px;
+}
+
+.site-logo a {
+    color: rgb(31, 189, 229);
+    transition: opacity 0.2s ease;
+}
+
+.site-logo a:hover {
+    opacity: 0.7;
 }
 
 .subtitle {
@@ -70,7 +78,6 @@ a:hover {
 .section { margin-bottom: 40px; }
 .year-group { margin-bottom: 30px; }
 
-/* 调整年份字号、颜色，并向右缩进 16px (约1-2个字符) */
 .year-label { 
     font-size: 12px;
     color: #888; 
@@ -87,7 +94,6 @@ a:hover {
     font-weight: 400;
 }
 
-/* 左下角时间微调：灰色，字号略大于右下角 */
 .left-footer-date {
     font-size: 14px;
     color: #888;
@@ -127,14 +133,13 @@ a:hover {
 .info-list { list-style: none; margin-bottom: 50px; }
 .info-list li { margin-bottom: 8px; font-size: 14px; }
 
-/* 调整右侧版权上移，为底部留出放图空间 */
 .footer-date { 
     font-size: 13px;
     color: #000; 
     margin-top: 50px; 
 }
 
-/* 动态详情页全屏弹出层基础样式 - 彻底锁死外层滚动 */
+/* 动态详情页全屏弹出层基础样式 */
 .detail-overlay {
     display: none;
     position: fixed;
@@ -144,11 +149,11 @@ a:hover {
     height: 100vh;
     background-color: var(--bg-color);
     z-index: 1000;
-    overflow: hidden;    /* ✨ 改为 hidden！不准整个弹窗本身滚动，只允许里面左侧的图片或右侧单独滚 */
-    padding: 0;          /* 清空外层 padding，全权交给内部容器接管 */
+    overflow: hidden;    
+    padding: 0;          
 }
 
-/* 🌟 优化后的顶栏样式：完美吸顶固定、消除多余留白 */
+/* 顶栏样式 */
 .detail-header {
     position: fixed;            
     top: 0;
@@ -156,78 +161,66 @@ a:hover {
     width: 100%;                
     background-color: var(--bg-color); 
     z-index: 1001;              
-    padding: 20px 60px;         /* 保持 60px 的左右内边距，和大图流对齐 */
+    padding: 20px 60px;         
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* 👈 删除了原本粗暴的整个底边 border */
 }
 
-/* ✨ 核心魔法：用伪元素画一条左右各缩进 60px 的浅灰色底边线，完美解决你红框圈出来的越界问题 */
 .detail-header::after {
     content: "";
     position: absolute;
     bottom: 0;
-    left: 60px;                 /* 左边缩进 60px，刚好对齐大图左边缘 */
-    right: 60px;                /* 右边缩进 60px，刚好对齐文字右边缘 */
+    left: 60px;                 
+    right: 60px;                
     height: 1px;
-    background-color: #eee;     /* 变回你原本喜欢的、克制且高级的浅灰色 */
+    background-color: #eee;     
 }
 
-/* 放大左侧的返回键 */
 .back-link {
     font-size: 16px;            
     font-weight: 500;
 }
 
-/* 🌟 优化后的双栏画廊样式：完美承载内部滚动，顶对齐 */
+/* 双栏画廊样式 */
 .detail-content-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;       /* 严格顶部对齐 */
+    align-items: flex-start;       
     gap: 60px;
-    padding: 25px 60px 80px 60px;  /* 顶部的 padding 缩减到 25px，把图片和文字有力地往上托 */
+    padding: 25px 60px 80px 60px;  
     width: 100%;
     max-width: 100%;
-    margin-top: 57px;              /* 刚好无缝卡在顶栏 Header 下边缘 */
-    
-    /* ✨ 核心滚动接管：让图片在这个容器里丝滑上下滑动 */
+    margin-top: 57px;              
     height: calc(100vh - 57px);   
     overflow-y: auto;             
 }
 
-/* 左侧媒体/图片列：解除 700px 限制，狠狠放大 */
 .detail-media-column {
     flex: 1;                       
     display: flex;
     flex-direction: column;
-    max-width: calc(100% - 380px); /* 动态计算：总宽减去右侧文字宽度和间距 */
+    max-width: calc(100% - 380px); 
 }
 
-/* 让图片和未来加入的视频无缝适配大图流 */
 .detail-media-column img,
 .detail-media-column video {
     width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 12px;           /* 保持你刚才满意的 12px 极致紧凑间距 */
+    margin-bottom: 12px;           
     border: 1px solid #f5f5f5; 
 }
 
-/* 右侧文字区域：精准锁死，完美对齐首图顶沿 */
 .detail-text-column {
     width: 320px;
     flex-shrink: 0;                
     position: sticky;
-    
-    /* ✨ 核心修正：由于上一级容器已经带有 padding，这里改成 0 就能让它和大图顶沿严丝合缝对齐 */
     top: 0;                     
-    
     max-height: calc(100vh - 120px); 
     overflow-y: auto;              
 }
 
-/* 隐藏右侧文字栏死板的滚动条 */
 .detail-text-column::-webkit-scrollbar {
     width: 0px;
     background: transparent;
@@ -241,9 +234,8 @@ a:hover {
     line-height: 1.8;
 }
 
-/* 移动端自适应 */
+/* 📱 移动端自适应完美重置 */
 @media (max-width: 850px) {
-    /* 首页两栏在手机端变成上下堆叠 */
     .container { 
         flex-direction: column; 
         gap: 50px; 
@@ -262,50 +254,43 @@ a:hover {
         padding-top: 0; 
     }
     
-    /* 🌟 详情页弹窗核心修复：在手机上恢复全局滚动，不再死锁屏幕 */
     .detail-overlay { 
         padding: 0; 
-        overflow-y: auto !important;  /* 强行恢复手机浏览器的丝滑上下滑动 */
+        overflow-y: auto !important;  
         height: 100vh;
         width: 100vw;
     }
     
-    /* 🌟 顶栏线重置：手机端变窄，间距缩小 */
     .detail-header { 
-        padding: 15px 20px;          /* 手机端左右留白缩到 20px */
+        padding: 15px 20px;          
     }
     .detail-header::after {
-        left: 20px;                  /* 线条两端精准贴齐手机边缘 */
+        left: 20px;                  
         right: 20px;
     }
     
-    /* 🌟 双栏内容：在手机端解除高度限制，变成上下大图铺满逻辑 */
     .detail-content-wrapper { 
         flex-direction: column; 
         gap: 30px; 
         padding: 20px 20px 60px 20px; 
-        margin-top: 50px;            /* 留出手机端顶栏高度 */
-        height: auto !important;     /* 核心：取消电脑端卡死高度的限制 */
-        overflow-y: visible !important; /* 核心：不需要单独的容器滚动 */
+        margin-top: 50px;            
+        height: auto !important;     
+        overflow-y: visible !important; 
     }
     
-    /* 左侧图片列在手机上 100% 满宽展示 */
     .detail-media-column {
         max-width: 100% !important;
     }
     
-    /* 右侧文字在手机上恢复到下方，宽度变满 */
     .detail-text-column { 
         width: 100% !important; 
-        position: static !important; /* 核心：在手机上解除 sticky 固定，让它乖乖排在图片下面 */
+        position: static !important; 
         max-height: none !important;
         overflow-y: visible !important;
     }
 }
 
-/* ==========================================================================
-   ✨ 完美保留：详情页右侧侧边栏项目快捷导航样式（冷淡流派）
-   ========================================================================== */
+/* 侧边栏项目快捷导航 */
 .detail-sidebar-nav {
     border-top: 1px solid #eee;
     padding-top: 20px;
@@ -332,7 +317,6 @@ a:hover {
     line-height: 1.4;
 }
 
-/* 当正在查看当前项目时：变成灰色、不可点击、取消hover效果 */
 .detail-sidebar-item.current-active a {
     color: #bbb !important;
     cursor: default;
