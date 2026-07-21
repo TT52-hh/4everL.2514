@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 🌟 获取元素
     const projectOverlay = document.getElementById('projectDetailOverlay');
     const closeDetailBtn = document.getElementById('closeDetailBtn');
     const detailProjectMeta = document.getElementById('detailProjectMeta');
@@ -6,22 +7,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailProjectDesc = document.getElementById('detailProjectDesc');
     const detailImagesBox = document.getElementById('detailImagesBox');
 
-    // 🌟 抓取右下角用来放 PROJECT INFO 的容器
-    const metaTagContainer = document.querySelector('.project-meta-tag');
+    const metaTagContainer = document.querySelector('#projectDetailOverlay .project-meta-tag');
 
     // 动态在详情页右侧文字栏下方塞入一个“快捷导航盒子”
-    const detailTextColumn = document.querySelector('.detail-text-column');
+    const detailTextColumn = document.querySelector('#projectDetailOverlay .detail-text-column');
     const sidebarNav = document.createElement('div');
     sidebarNav.className = 'detail-sidebar-nav';
     detailTextColumn.appendChild(sidebarNav);
 
-    // 核心渲染函数：无论是从首页点进来的，还是在侧边栏切换的，都用它来刷新画面
+    // 核心渲染函数
     function renderProject(clickedLink) {
         const title = clickedLink.getAttribute('data-title');
         const desc = clickedLink.getAttribute('data-desc');
         const imgsData = clickedLink.getAttribute('data-imgs'); 
         
-        // 读取 HTML 上面的新标签数据，如果没写就给个克制的中文/数字兜底
         const type = clickedLink.getAttribute('data-type') || '数字媒体 / 艺术';
         const date = clickedLink.getAttribute('data-date') || '2026';
         
@@ -29,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         detailProjectTitle.textContent = title;
         detailProjectDesc.innerHTML = desc || ''; 
 
-        // 🌟 核心汉化调整：消灭多余英文，保持极其干净的冷淡中文版式
         if (metaTagContainer) {
             metaTagContainer.innerHTML = `
                 <p style="color:#000; font-weight:500; margin-bottom: 4px;">项目信息</p>
@@ -38,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }
         
-        // 清空盒子，重新吐出图片
         detailImagesBox.innerHTML = '';
         
         if (imgsData) {
@@ -52,14 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
             detailImagesBox.innerHTML = '<div style="font-size:13px; color:#999; padding-top:20px;">[作品图片正在整理上传中...]</div>';
         }
 
-        // 自动化魔法：实时复印首页的菜单列表
         generateSidebarMenu(title);
-
-        // 切换项目的时候，自动把弹窗的滚动条抽回最顶部
         projectOverlay.scrollTop = 0;
     }
 
-    // 自动化“复印”首页侧边栏菜单的函数
+    // 自动化复印首页侧边栏菜单
     function generateSidebarMenu(currentTitle) {
         sidebarNav.innerHTML = ''; 
         
@@ -104,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 监听主页所有带 .open-project 的链接
+    // 监听主页所有项目链接
     document.querySelectorAll('.open-project').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -113,9 +107,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 监听关闭按钮
+    // 监听项目详情关闭按钮
     closeDetailBtn.addEventListener('click', (e) => {
         e.preventDefault();
         projectOverlay.style.display = 'none';
     });
+
+    // ==========================================================================
+    // 🌟 About Me 个人介绍弹窗控制逻辑
+    // ==========================================================================
+    const aboutOverlay = document.getElementById('aboutDetailOverlay');
+    const openAboutBtn = document.getElementById('openAboutBtn');
+    const closeAboutBtn = document.getElementById('closeAboutBtn');
+
+    if (openAboutBtn && aboutOverlay) {
+        openAboutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            aboutOverlay.style.display = 'block';
+            aboutOverlay.scrollTop = 0;
+        });
+    }
+
+    if (closeAboutBtn && aboutOverlay) {
+        closeAboutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            aboutOverlay.style.display = 'none';
+        });
+    }
 });
