@@ -1,137 +1,332 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // 🌟 获取元素
-    const projectOverlay = document.getElementById('projectDetailOverlay');
-    const closeDetailBtn = document.getElementById('closeDetailBtn');
-    const detailProjectMeta = document.getElementById('detailProjectMeta');
-    const detailProjectTitle = document.getElementById('detailProjectTitle');
-    const detailProjectDesc = document.getElementById('detailProjectDesc');
-    const detailImagesBox = document.getElementById('detailImagesBox');
+/* 全局基础重置与平滑字体 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
 
-    const metaTagContainer = document.querySelector('#projectDetailOverlay .project-meta-tag');
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --border-color: #000000;
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "Microsoft YaHei", sans-serif;
+}
 
-    // 动态在详情页右侧文字栏下方塞入一个“快捷导航盒子”
-    const detailTextColumn = document.querySelector('#projectDetailOverlay .detail-text-column');
-    const sidebarNav = document.createElement('div');
-    sidebarNav.className = 'detail-sidebar-nav';
-    detailTextColumn.appendChild(sidebarNav);
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    padding: 50px 60px;
+    font-size: 14px;
+}
 
-    // 核心渲染函数
-    function renderProject(clickedLink) {
-        const title = clickedLink.getAttribute('data-title');
-        const desc = clickedLink.getAttribute('data-desc');
-        const imgsData = clickedLink.getAttribute('data-imgs'); 
-        
-        const type = clickedLink.getAttribute('data-type') || '数字媒体 / 艺术';
-        const date = clickedLink.getAttribute('data-date') || '2026';
-        
-        detailProjectMeta.textContent = title;
-        detailProjectTitle.textContent = title;
-        detailProjectDesc.innerHTML = desc || ''; 
+/* 移除死板下划线 */
+a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
 
-        if (metaTagContainer) {
-            metaTagContainer.innerHTML = `
-                <p style="color:#000; font-weight:500; margin-bottom: 4px;">项目信息</p>
-                <p>${type}</p>
-                <p>${date}</p>
-            `;
-        }
-        
-        detailImagesBox.innerHTML = '';
-        
-        if (imgsData) {
-            const imgList = imgsData.split(','); 
-            imgList.forEach(url => {
-                const imgElement = document.createElement('img');
-                imgElement.src = url.trim(); 
-                detailImagesBox.appendChild(imgElement);
-            });
-        } else {
-            detailImagesBox.innerHTML = '<div style="font-size:13px; color:#999; padding-top:20px;">[作品图片正在整理上传中...]</div>';
-        }
+a:hover {
+    opacity: 0.6;
+}
 
-        generateSidebarMenu(title);
-        projectOverlay.scrollTop = 0;
+/* 双栏开放式布局 */
+.container {
+    display: flex;
+    max-width: 1300px;
+    margin: 0 auto;
+    gap: 120px;
+    position: relative;
+}
+
+.left-col { 
+    flex: 1.1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 80vh; 
+}
+.right-col { flex: 0.9; }
+
+/* 站点左上角标识 */
+.site-logo {
+    font-size: 45px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    letter-spacing: -0.2px;
+}
+
+.site-logo a {
+    color: rgb(31, 189, 229);
+    transition: opacity 0.2s ease;
+}
+
+.site-logo a:hover {
+    opacity: 0.7;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: #666;
+    margin-top: -20px;
+    margin-bottom: 35px;
+}
+
+.section { margin-bottom: 40px; }
+.year-group { margin-bottom: 30px; }
+
+.year-label { 
+    font-size: 12px;
+    color: #888; 
+    font-weight: 400; 
+    margin-bottom: 12px; 
+    padding-left: 16px; 
+}
+
+.project-list { list-style: none; }
+.project-item { margin-bottom: 8px; }
+
+.project-link {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.left-footer-date {
+    font-size: 14px;
+    color: #888;
+    margin-top: auto;
+    padding-top: 60px;
+}
+
+/* 右栏特定排版 */
+.header-title-block { margin-bottom: 25px; }
+
+.main-title { 
+    font-size: 16px; 
+    font-weight: 500;
+    letter-spacing: -0.1px;
+}
+
+.chinese-subtext {
+    font-size: 12px;
+    color: #666; 
+    display: block;
+    margin-top: 2px;
+}
+
+.location-text {
+    font-size: 16px;
+    color: #000;
+    font-weight: 400;
+}
+
+.bio-text {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 45px;
+    max-width: 420px;
+}
+
+.info-list { list-style: none; margin-bottom: 50px; }
+.info-list li { margin-bottom: 8px; font-size: 14px; }
+
+.footer-date { 
+    font-size: 13px;
+    color: #000; 
+    margin-top: 50px; 
+}
+
+/* 动态详情页全屏弹出层基础样式 */
+.detail-overlay {
+    display: none;
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh;
+    background-color: var(--bg-color);
+    z-index: 1000;
+    overflow: hidden;    
+    padding: 0;          
+}
+
+/* 顶栏样式 */
+.detail-header {
+    position: fixed;            
+    top: 0;
+    left: 0;
+    width: 100%;                
+    background-color: var(--bg-color); 
+    z-index: 1001;              
+    padding: 20px 60px;         
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail-header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 60px;                 
+    right: 60px;                
+    height: 1px;
+    background-color: #eee;     
+}
+
+.back-link {
+    font-size: 16px;            
+    font-weight: 500;
+}
+
+/* 双栏画廊样式 */
+.detail-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;       
+    gap: 60px;
+    padding: 25px 60px 80px 60px;  
+    width: 100%;
+    max-width: 100%;
+    margin-top: 57px;              
+    height: calc(100vh - 57px);   
+    overflow-y: auto;             
+}
+
+.detail-media-column {
+    flex: 1;                       
+    display: flex;
+    flex-direction: column;
+    max-width: calc(100% - 380px); 
+}
+
+.detail-media-column img,
+.detail-media-column video {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 12px;           
+    border: 1px solid #f5f5f5; 
+}
+
+.detail-text-column {
+    width: 320px;
+    flex-shrink: 0;                
+    position: sticky;
+    top: 0;                     
+    max-height: calc(100vh - 120px); 
+    overflow-y: auto;              
+}
+
+.detail-text-column::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.project-meta-tag {
+    border-top: 1px solid #000;
+    padding-top: 15px;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.8;
+}
+
+/* 📱 移动端自适应完美重置 */
+@media (max-width: 850px) {
+    .container { 
+        flex-direction: column; 
+        gap: 50px; 
     }
-
-    // 自动化复印首页侧边栏菜单
-    function generateSidebarMenu(currentTitle) {
-        sidebarNav.innerHTML = ''; 
-        
-        const yearGroups = document.querySelectorAll('.left-col .year-group');
-        
-        yearGroups.forEach(group => {
-            const yearLabel = group.querySelector('.year-label').textContent;
-            
-            const navYear = document.createElement('div');
-            navYear.className = 'nav-year';
-            navYear.textContent = yearLabel;
-            sidebarNav.appendChild(navYear);
-            
-            const ul = document.createElement('ul');
-            ul.className = 'detail-sidebar-list';
-            
-            const links = group.querySelectorAll('.open-project');
-            links.forEach(link => {
-                const projectTitle = link.getAttribute('data-title');
-                const li = document.createElement('li');
-                li.className = 'detail-sidebar-item';
-                
-                if (projectTitle === currentTitle) {
-                    li.classList.add('current-active');
-                }
-                
-                const a = document.createElement('a');
-                a.href = '#';
-                a.className = 'detail-sidebar-link';
-                a.textContent = link.textContent; 
-                
-                a.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    renderProject(link); 
-                });
-                
-                li.appendChild(a);
-                ul.appendChild(li);
-            });
-            
-            sidebarNav.appendChild(ul);
-        });
+    
+    body { 
+        padding: 30px 20px; 
     }
-
-    // 监听主页所有项目链接
-    document.querySelectorAll('.open-project').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            renderProject(link);
-            projectOverlay.style.display = 'block';
-        });
-    });
-
-    // 监听项目详情关闭按钮
-    closeDetailBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        projectOverlay.style.display = 'none';
-    });
-
-    // ==========================================================================
-    // 🌟 About Me 个人介绍弹窗控制逻辑
-    // ==========================================================================
-    const aboutOverlay = document.getElementById('aboutDetailOverlay');
-    const openAboutBtn = document.getElementById('openAboutBtn');
-    const closeAboutBtn = document.getElementById('closeAboutBtn');
-
-    if (openAboutBtn && aboutOverlay) {
-        openAboutBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            aboutOverlay.style.display = 'block';
-            aboutOverlay.scrollTop = 0;
-        });
+    
+    .left-col { 
+        min-height: auto; 
     }
-
-    if (closeAboutBtn && aboutOverlay) {
-        closeAboutBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            aboutOverlay.style.display = 'none';
-        });
+    
+    .left-footer-date { 
+        margin-top: 20px; 
+        padding-top: 0; 
     }
-});
+    
+    .detail-overlay { 
+        padding: 0; 
+        overflow-y: auto !important;  
+        height: 100vh;
+        width: 100vw;
+    }
+    
+    .detail-header { 
+        padding: 15px 20px;          
+    }
+    .detail-header::after {
+        left: 20px;                  
+        right: 20px;
+    }
+    
+    .detail-content-wrapper { 
+        flex-direction: column; 
+        gap: 30px; 
+        padding: 20px 20px 60px 20px; 
+        margin-top: 50px;            
+        height: auto !important;     
+        overflow-y: visible !important; 
+    }
+    
+    .detail-media-column {
+        max-width: 100% !important;
+    }
+    
+    .detail-text-column { 
+        width: 100% !important; 
+        position: static !important; 
+        max-height: none !important;
+        overflow-y: visible !important;
+    }
+}
+
+/* 侧边栏项目快捷导航 */
+.detail-sidebar-nav {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    margin-top: 25px;
+}
+
+.detail-sidebar-nav .nav-year {
+    font-size: 11px;
+    color: #999;
+    font-weight: 500;
+    margin-bottom: 6px;
+    margin-top: 12px;
+    letter-spacing: 0.5px;
+}
+.detail-sidebar-nav .nav-year:first-child { margin-top: 0; }
+
+.detail-sidebar-list {
+    list-style: none;
+}
+
+.detail-sidebar-item {
+    font-size: 13px;
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.detail-sidebar-item.current-active a {
+    color: #bbb !important;
+    cursor: default;
+    pointer-events: none; 
+}
+
+.detail-sidebar-link {
+    color: #000;
+    transition: opacity 0.2s;
+}
+.detail-sidebar-link:hover {
+    opacity: 0.5;
+}
