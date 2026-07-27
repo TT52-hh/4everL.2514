@@ -342,236 +342,130 @@ a:hover {
     opacity: 0.5;
 }
 /* ==========================================================================
-   🌸 Y2K 复古游戏风格 About Me 专属样式
+   🌟 About Me 专属新版排版样式（左图右文 + 3列履历）
    ========================================================================== */
 
-#aboutDetailOverlay {
-    background: #ffdeeb !important; /* Y2K 复古亮粉背景 */
+/* 主容器：居中对齐 */
+.about-content-wrapper {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    overflow-y: auto;
+    align-items: flex-start;
+    gap: 60px;
+    padding: 60px 60px 40px 60px;
+    max-width: 1100px;
+    margin: 57px auto 0 auto;
 }
 
-/* 游戏整体大框体 */
-.y2k-game-container {
-    width: 90%;
-    max-width: 960px;
-    background: #fff0f6;
-    border: 3px solid #ff007f;
-    outline: 2px solid #ffffff;
-    box-shadow: 0 0 0 6px #ff66b2, 0 15px 35px rgba(255, 0, 127, 0.25);
-    border-radius: 4px;
-    padding: 6px;
-    margin: 60px auto 30px auto;
-}
-
-/* 顶部提示条 */
-.y2k-top-bar {
-    background: #ffffff;
-    border: 2px solid #ff007f;
-    display: flex;
-    align-items: center;
-    padding: 4px 8px;
-    margin-bottom: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    color: #ff007f;
-}
-
-.y2k-badge {
-    background: #ff007f;
-    color: #fff;
-    padding: 1px 6px;
-    font-size: 10px;
-    margin-right: 10px;
-}
-
-.y2k-marquee {
-    flex: 1;
-    text-align: center;
-    letter-spacing: 1px;
-}
-
-/* 中间主内容区 */
-.y2k-main-content {
-    display: flex;
-    gap: 8px;
-}
-
-/* 左侧 Profile 卡片 */
-.y2k-profile-card {
-    width: 240px;
+/* 👈 左侧照片卡片 */
+.about-photo-column {
+    width: 320px;
     flex-shrink: 0;
-    background: #fff;
-    border: 2px solid #ff007f;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
 }
 
-.y2k-card-header {
-    background: linear-gradient(180deg, #ff66b2 0%, #ff007f 100%);
-    color: #fff;
-    width: 100%;
-    text-align: center;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 3px 0;
-    margin-bottom: 8px;
-    letter-spacing: 1px;
-}
-
-.y2k-avatar-box {
-    width: 100%;
-    height: 190px;
-    border: 2px solid #ff66b2;
-    padding: 3px;
-    background: #fafafa;
-    margin-bottom: 10px;
-}
-
-.y2k-avatar-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.y2k-info-list {
-    width: 100%;
-    font-size: 11px;
-    color: #333;
-    line-height: 1.8;
-}
-
-.y2k-info-list span {
-    color: #ff007f;
-    font-weight: bold;
-    display: inline-block;
-    width: 55px;
-}
-
-.y2k-status-tag {
-    background: #000;
-    color: #00ffcc;
-    font-size: 10px;
-    font-weight: bold;
-    padding: 3px 10px;
-    margin: 8px 0;
-    letter-spacing: 1px;
-}
-
-.y2k-quote {
-    font-size: 11px;
-    color: #888;
-    font-style: italic;
-    text-align: center;
-}
-
-.y2k-sticker-butterfly {
-    position: absolute;
-    bottom: 5px;
-    left: 10px;
-    font-size: 24px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
-}
-
-/* 右侧主舞台区 */
-.y2k-stage-area {
-    flex: 1;
-    border: 2px solid #ff007f;
-    position: relative;
-    background: #000;
-    overflow: hidden;
-    min-height: 380px;
-}
-
-.y2k-stage-bg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.y2k-stage-banner {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.75);
-    color: #ffcc00;
-    font-size: 11px;
-    text-align: center;
-    padding: 6px;
-    letter-spacing: 1px;
-    border-top: 1px solid #ff007f;
-}
-
-/* 底部 Start 操作条 */
-.y2k-bottom-bar {
+.about-photo-card {
     background: #ffffff;
-    border: 2px solid #ff007f;
-    margin-top: 6px;
     padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: 6px;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.about-photo-card img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
+
+/* 👉 右侧文字主体 */
+.about-text-column {
+    flex: 1;
+    max-width: 650px;
+}
+
+.about-name {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+    color: #000;
+}
+
+.about-tagline {
+    font-size: 14px;
+    color: #1fbde5;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.about-bio {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.7;
+    margin-bottom: 35px;
+}
+
+.about-bio p {
+    margin-bottom: 12px;
+}
+
+/* 🌟 3列网格分布 */
+.about-grid-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 30px;
 }
 
-.y2k-sub-text {
-    font-size: 14px;
-    font-style: italic;
-    color: #ff007f;
-    font-weight: bold;
+.about-info-block h4 {
+    font-size: 12px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.y2k-start-btn {
-    background: linear-gradient(180deg, #ff80bf 0%, #ff007f 50%, #cc0066 100%);
-    border: 2px solid #ffffff;
-    outline: 2px solid #ff007f;
-    border-radius: 30px;
-    padding: 6px 35px;
-    color: #fff;
-    cursor: pointer;
-    box-shadow: inset 0 2px 2px rgba(255,255,255,0.8), 0 4px 10px rgba(255,0,127,0.4);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.1s;
+.about-info-block p {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.7;
 }
 
-.y2k-start-btn:hover {
-    transform: scale(1.03);
+/* 🌟 底部居中 MY TOOLS 标题 */
+.about-tools-section {
+    text-align: center;
+    padding: 30px 0 60px 0;
 }
 
-.y2k-start-btn span {
-    font-size: 16px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-}
-
-.y2k-start-btn small {
-    font-size: 8px;
+.tools-title {
+    font-size: 24px;
+    font-weight: 500;
     letter-spacing: 1px;
-    opacity: 0.9;
-}
-
-.y2k-stars {
-    color: #ffcc00;
-    font-size: 14px;
+    color: #000;
 }
 
 /* 📱 移动端自适应 */
 @media (max-width: 850px) {
-    .y2k-main-content {
+    .about-content-wrapper {
         flex-direction: column;
+        padding: 30px 20px;
+        gap: 30px;
     }
-    .y2k-profile-card {
+    
+    .about-photo-column {
         width: 100%;
+    }
+    
+    .about-photo-card img {
+        height: 300px;
+    }
+    
+    .about-grid-info {
+        grid-template-columns: 1fr; /* 手机端恢复单栏 */
+        gap: 20px;
     }
 }
 /* 🌟 加粗版千禧果冻按键 */
