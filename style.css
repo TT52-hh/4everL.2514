@@ -456,37 +456,41 @@ a:hover {
         gap: 25px;
     }
 }
-/* ==========================================================================
-   🌟 千禧果冻感绿色返回按钮 (Y2K / Web 2.0 Style)
-   ========================================================================== */
+/* 🌟 加粗版千禧果冻按键 */
 .back-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    padding: 6px 18px;
-    font-size: 13px;
-    font-weight: 600;
+    gap: 8px;
+    padding: 7px 20px;
+    font-size: 14px;
+    font-weight: 700; /* 整体文字加粗 */
     color: #ffffff !important;
     text-decoration: none;
     
-    /* 胶囊圆角与果冻绿渐变 */
     border-radius: 50px;
     background: linear-gradient(180deg, #7ad34d 0%, #52b528 50%, #44a31d 100%);
     
-    /* 核心视觉：上方白色半透明内高光 + 底部精致弥散阴影 */
     box-shadow: 
-        inset 0 1px 1px rgba(255, 255, 255, 0.7), /* 顶边内高光 */
-        inset 0 -1px 2px rgba(0, 0, 0, 0.15),    /* 底边微暗影 */
-        0 4px 10px rgba(78, 175, 36, 0.35);       /* 柔和绿阴影 */
+        inset 0 1px 1px rgba(255, 255, 255, 0.8), 
+        inset 0 -1px 2px rgba(0, 0, 0, 0.15),    
+        0 4px 10px rgba(78, 175, 36, 0.35);       
         
     border: 1px solid #4cae22;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); /* 文字微阴影 */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
     transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
     cursor: pointer;
 }
 
-/* 鼠标悬停：微微亮起并轻微上浮 */
+/* 专门给箭头设置加粗 */
+.back-link .arrow {
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 1;
+    display: inline-block;
+    transform: translateY(-0.5px);
+}
+
 .back-link:hover {
     opacity: 1 !important;
     background: linear-gradient(180deg, #87e357 0%, #5bc72d 50%, #4bb420 100%);
@@ -496,11 +500,15 @@ a:hover {
     transform: translateY(-1px);
 }
 
-/* 鼠标按下去：真实凹陷按压感 */
 .back-link:active {
     transform: translateY(1px);
     background: linear-gradient(180deg, #44a31d 0%, #52b528 100%);
     box-shadow: 
         inset 0 2px 4px rgba(0, 0, 0, 0.3),
         0 2px 4px rgba(78, 175, 36, 0.2);
+}
+
+/* 隐藏返回按键旁边的项目标题名字 */
+#detailProjectMeta {
+    display: none !important;
 }
