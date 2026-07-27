@@ -468,6 +468,18 @@ a:hover {
         gap: 20px;
     }
 }
+/* 🌟 给 About Me 弹窗加上粉色渐变背景 */
+#aboutDetailOverlay {
+    background: linear-gradient(180deg, #ffffff 0%, #fff0f3 40%, #ffb6c1 100%) !important;
+}
+
+/* 确保顶栏在渐变背景上依然清晰透明 */
+#aboutDetailOverlay .detail-header {
+    background-color: transparent !important;
+}
+#aboutDetailOverlay .detail-header::after {
+    display: none; /* 移除顶栏下面的分隔线，让渐变更自然 */
+}
 /* 🌟 加粗版千禧果冻按键 */
 .back-link {
     display: inline-flex;
