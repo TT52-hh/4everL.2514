@@ -226,8 +226,10 @@ a:hover {
     flex-shrink: 0;                
     position: sticky;
     top: 0;                     
-    max-height: calc(100vh - 120px); 
-    overflow-y: auto;              
+    /* 🌟 移除原有的固定最大高度与独立滚动条，让它自然固定/跟随滚动 */
+    height: fit-content; 
+    max-height: none !important; 
+    overflow-y: visible !important;              
 }
 
 .detail-text-column::-webkit-scrollbar {
