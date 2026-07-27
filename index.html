@@ -139,7 +139,7 @@
         </div>
     </div>
 
-    <!-- 🌟 About Me 个人介绍全屏弹窗（全新专属排版） -->
+    <!-- 🌟 About Me 个人介绍全屏弹窗（新版排版：左图右文 + 3列履历） -->
     <div class="detail-overlay" id="aboutDetailOverlay">
         <div class="detail-header">
             <div>
@@ -149,7 +149,14 @@
         </div>
         
         <div class="about-content-wrapper">
-            <!-- 左侧：占据主导地位的详细履历与个人介绍 -->
+            <!-- 👈 左侧：个人照片卡片 -->
+            <div class="about-photo-column">
+                <div class="about-photo-card">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200" alt="Tan Jie Profile">
+                </div>
+            </div>
+
+            <!-- 👉 右侧：详细履历与个人介绍 -->
             <div class="about-text-column">
                 <h2 class="about-name">谭婕 (Tan Jie)</h2>
                 <p class="about-tagline">Digital Media Artist / UI Designer</p>
@@ -159,6 +166,7 @@
                     <p>具备从全案品牌视觉识别系统（VIS）、AIGC 视觉叙事工作流构建，到实体衍生品工艺打样落地的完整跨界设计能力。</p>
                 </div>
 
+                <!-- 🌟 3 列横排履历 -->
                 <div class="about-grid-info">
                     <div class="about-info-block">
                         <h4>教育背景 & 经历</h4>
@@ -167,14 +175,14 @@
                     </div>
 
                     <div class="about-info-block">
-                        <h4>专业技能 / Tools</h4>
+                        <h4>专业技能 / TOOLS</h4>
                         <p>UI/UX (Figma, Design System)</p>
                         <p>VIS 品牌视觉 (AI, PS)</p>
                         <p>AIGC 工作流 (即梦, ChatGPT)</p>
                     </div>
 
                     <div class="about-info-block">
-                        <h4>联系方式 / Contact</h4>
+                        <h4>联系方式 / CONTACT</h4>
                         <p>TEL: 15626696080</p>
                         <p>Email: 834893229@qq.com</p>
                         <p>小红书: 焦糖餡</p>
@@ -182,17 +190,13 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!-- 右侧：精致比例的个人卡片照片 -->
-            <div class="about-photo-column">
-                <div class="about-photo-card">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200" alt="Tan Jie Profile">
-                    <div class="about-photo-caption">Based in Guangzhou 📍</div>
-                </div>
-            </div>
+        <!-- 🌟 底部居中大标题 -->
+        <div class="about-tools-section">
+            <h3 class="tools-title">MY TOOLS</h3>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
