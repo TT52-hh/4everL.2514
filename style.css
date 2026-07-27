@@ -512,3 +512,27 @@ a:hover {
 #detailProjectMeta {
     display: none !important;
 }
+/* 左上角艺术字 Logo 样式 */
+.site-logo {
+    margin-bottom: 25px;
+    line-height: 1;
+}
+
+.site-logo-img {
+    height: 52px; /* 尺寸恰到好处，可根据喜好微调 */
+    width: auto;
+    display: block;
+    transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.2s;
+}
+
+.site-logo a:hover .site-logo-img {
+    transform: scale(1.05) rotate(-1deg); /* 悬停时微微放大倾斜，极具千禧趣味感 */
+    opacity: 0.9;
+}
+
+/* 📱 移动端适当缩小 Logo */
+@media (max-width: 850px) {
+    .site-logo-img {
+        height: 40px;
+    }
+}
