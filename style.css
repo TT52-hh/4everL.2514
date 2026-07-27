@@ -98,7 +98,16 @@ a:hover {
     font-size: 14px;
     color: #888;
     margin-top: auto;
-    padding-top: 60px;
+    padding-top: 30px; /* 从原先的 60px 缩减，留出更紧凑的空间 */
+    transform: translateY(-27px); /* 🌟 向上偏移 27px */
+}
+
+/* 📱 移动端复位 */
+@media (max-width: 850px) {
+    .left-footer-date {
+        transform: none;
+        padding-top: 0;
+    }
 }
 
 /* 右栏特定排版 */
