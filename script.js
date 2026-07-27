@@ -45,9 +45,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if (imgsData) {
                 const imgList = imgsData.split(','); 
                 imgList.forEach(url => {
-                    const imgElement = document.createElement('img');
-                    imgElement.src = url.trim(); 
-                    detailImagesBox.appendChild(imgElement);
+                    const cleanUrl = url.trim();
+                    // 🌟 增加判断：如果文件以 .mp4 或 .webm 结尾，就创建视频标签
+                    if (cleanUrl.toLowerCase().endsWith('.mp4') || cleanUrl.toLowerCase().endsWith('.webm')) {
+                        const videoElement = document.createElement('video');
+                        videoElement.src = cleanUrl;
+                        videoElement.controls = true; // 显示播放控制条
+                        videoElement.autoplay = true; // 自动播放
+                        videoElement.muted = true;    // 静音（浏览器限制：静音才能自动播放）
+                        videoElement.loop = true;     // 循环播放
+                        videoElement.playsInline = true;
+                        detailImagesBox.appendChild(videoElement);
+                    } else {
+                        // 普通图片处理
+                        const imgElement = document.createElement('img');
+                        imgElement.src = cleanUrl; 
+                        detailImagesBox.appendChild(imgElement);
+                    }
                 });
             } else {
                 detailImagesBox.innerHTML = '<div style="font-size:13px; color:#999; padding-top:20px;">[作品图片正在整理上传中...]</div>';
