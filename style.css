@@ -516,37 +516,38 @@ a:hover {
    🌟 视觉布局精准微调 (按照AFTER标注更新)
    ========================================================================== */
 
-/* 1. 左侧栏整体向上偏移 */
-.left-col {
-    transform: translateY(-25px);
-}
-
-/* 2. Logo 容器及大尺寸控制 */
+/* 2. Logo 容器及大尺寸控制 (再次放大 + 破局左移) */
 .site-logo {
     margin-bottom: 25px;
     line-height: 1;
 }
 
 .site-logo-img {
-    height: 232px !important; /* 契合 AFTER 中的精准高度 */
+    height: 253px !important; /* 按照视觉标注再次放大 */
     width: auto !important;
-    max-width: 100%;
+    max-width: none !important; /* 取消最大宽度限制，防止左移后被挤压变形 */
     display: block;
     object-fit: contain;
+    transform: translateX(-58px); /* 🌟 向左偏移 58px，视觉破局！ */
     transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.2s;
 }
 
+/* 🌟 悬停效果：必须带上 translateX(-58px)，否则会闪现移位 */
 .site-logo a:hover .site-logo-img {
-    transform: scale(1.02);
+    transform: translateX(-58px) scale(1.02) rotate(-1deg);
     opacity: 0.92;
 }
 
-/* 📱 移动端自适应（防止大图在手机端溢出屏幕） */
+/* 📱 移动端自适应 */
 @media (max-width: 850px) {
     .left-col {
-        transform: none; /* 移动端还原偏移 */
+        transform: none; 
     }
     .site-logo-img {
         height: 120px !important;
+        transform: translateX(0); /* 手机端屏幕小，取消左移，否则会超出屏幕边界 */
+    }
+    .site-logo a:hover .site-logo-img {
+        transform: scale(1.02); /* 手机端悬停去掉位移 */
     }
 }
