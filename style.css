@@ -512,27 +512,30 @@ a:hover {
 #detailProjectMeta {
     display: none !important;
 }
-/* 左上角艺术字 Logo 样式 */
+/* 左上角艺术字 Logo 样式（放大版） */
 .site-logo {
-    margin-bottom: 25px;
+    margin-bottom: 35px; /* 适当增加底部留白，和作品列表拉开舒适距离 */
     line-height: 1;
 }
 
 .site-logo-img {
-    height: 52px; /* 尺寸恰到好处，可根据喜好微调 */
+    height: 110px; /* 尺寸大幅放大（可根据实际效果在 90px~130px 之间微调） */
     width: auto;
     display: block;
-    transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.2s;
+    transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.2s;
 }
 
 .site-logo a:hover .site-logo-img {
-    transform: scale(1.05) rotate(-1deg); /* 悬停时微微放大倾斜，极具千禧趣味感 */
-    opacity: 0.9;
+    transform: scale(1.04) rotate(-1.5deg); /* 悬停时轻微放大倾斜，极具千禧灵动感 */
+    opacity: 0.92;
 }
 
-/* 📱 移动端适当缩小 Logo */
+/* 📱 移动端自适应适配 */
 @media (max-width: 850px) {
+    .site-logo {
+        margin-bottom: 25px;
+    }
     .site-logo-img {
-        height: 40px;
+        height: 80px; /* 手机端适当缩放 */
     }
 }
