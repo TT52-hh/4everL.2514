@@ -437,52 +437,62 @@ a:hover {
     }
 }
 /* ==========================================================================
-   🌸 Cyber-Kawaii 千禧复古粉绿风格 (About Me 专属样式)
+   🌸 Cyber-Kawaii 纯粉底色 + 薄荷绿窗口 (About Me 专属样式)
    ========================================================================== */
 
-/* 大背景：浅粉色微格纹背景 */
+/* 大背景：去掉格子，改为纯净柔粉色 */
 .cyber-about-overlay {
     background-color: #ffdce5 !important;
-    background-image: 
-        linear-gradient(rgba(255, 182, 193, 0.3) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 182, 193, 0.3) 1px, transparent 1px);
-    background-size: 20px 20px;
+    background-image: none !important; /* 移除格子 */
     display: none; /* 由 JS 动态控制显示 */
     padding: 30px !important;
     box-sizing: border-box;
     overflow-y: auto !important;
 }
 
-/* 外层大窗口：薄荷绿底色 + Win98/XP 经典立体 Bevel 边框 */
+/* 返回按钮：固定在窗口外的原有地方 */
+.cyber-about-overlay .back-link {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 20px;
+    display: inline-flex;
+}
+
+/* 外层大窗口容器 */
+.cyber-window-container {
+    max-width: 1000px;
+    margin: 0 auto 40px auto;
+}
+
+/* 窗口顶栏：薄荷绿 */
 .cyber-window-header {
     background: linear-gradient(90deg, #52b528 0%, #7ad34d 100%);
     border-top: 2px solid #a3f780;
     border-left: 2px solid #a3f780;
     border-right: 2px solid #2d6b13;
     border-bottom: 2px solid #2d6b13;
-    padding: 8px 15px;
+    padding: 6px 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
     border-radius: 6px 6px 0 0;
 }
 
 .cyber-window-title {
     color: #ffffff;
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 
 .cyber-window-controls {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 
 /* Win98 风格假按钮 */
@@ -490,60 +500,58 @@ a:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     background: #d4f8cd;
     border-top: 2px solid #ffffff;
     border-left: 2px solid #ffffff;
     border-right: 2px solid #3e8822;
     border-bottom: 2px solid #3e8822;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
     color: #1b470a;
     cursor: default;
     user-select: none;
 }
 
-/* 窗口主体：果冻薄荷绿 */
+/* 窗口主体 */
 .cyber-window-body {
-    max-width: 1100px;
-    margin: 0 auto 50px auto;
     background: #e1f7dc;
     border-left: 3px solid #ffffff;
     border-right: 3px solid #3e8822;
     border-bottom: 3px solid #3e8822;
     box-shadow: 6px 8px 20px rgba(216, 112, 147, 0.25);
-    padding: 30px;
+    padding: 24px;
     display: flex;
-    gap: 35px;
+    gap: 25px;
     border-radius: 0 0 8px 8px;
 }
 
-/* 左栏：个人名片区 */
+/* 左栏：个人名片区（高度紧凑化） */
 .cyber-left-card {
-    width: 300px;
+    width: 270px;
     flex-shrink: 0;
     background: #f0fceb;
     border: 2px solid #a8e695;
     border-radius: 8px;
-    padding: 20px;
+    padding: 16px;
     box-shadow: inset 1px 1px 0px #ffffff;
 }
 
-/* 个人大头照立体小相框（粉绿相间） */
+/* 个人照片小相框 */
 .cyber-avatar-frame {
     background: #ffd3e0;
-    border: 3px solid #ff9ebb;
+    border: 2px solid #ff9ebb;
     border-radius: 8px;
-    padding: 8px;
-    box-shadow: 3px 3px 0px #52b528;
-    margin-bottom: 20px;
+    padding: 6px;
+    box-shadow: 2px 2px 0px #52b528;
+    margin-bottom: 14px;
     text-align: center;
 }
 
 .cyber-avatar-img {
     width: 100%;
-    height: 260px;
+    height: 210px; /* 适度缩短照片高度，使整个窗口向上收缩 */
     object-fit: cover;
     border-radius: 4px;
     border: 1px solid #ffb6c1;
@@ -551,75 +559,78 @@ a:hover {
 }
 
 .cyber-avatar-tag {
-    margin-top: 8px;
-    font-size: 12px;
+    margin-top: 6px;
+    font-size: 11px;
     font-weight: bold;
     color: #2d6b13;
     background: #d4f8cd;
-    padding: 3px 8px;
+    padding: 2px 8px;
     border-radius: 10px;
     display: inline-block;
 }
 
 .cyber-profile-meta {
-    margin-bottom: 25px;
+    margin-bottom: 16px;
     border-bottom: 1px dashed #a8e695;
-    padding-bottom: 15px;
+    padding-bottom: 12px;
 }
 
 .cyber-meta-name {
-    font-size: 18px;
+    font-size: 16px;
     color: #111;
     font-weight: 700;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .cyber-meta-job {
-    font-size: 13px;
+    font-size: 12px;
     color: #44a31d;
     font-weight: 600;
 }
 
 .cyber-meta-loc {
-    font-size: 12px;
+    font-size: 11px;
     color: #666;
     margin-top: 2px;
 }
 
-/* 联系方式：立体果冻绿按钮 */
+/* 联系方式按钮（紧凑 3 个） */
 .cyber-section-sub-title {
     font-size: 11px;
     font-weight: 700;
-    color: #888;
-    letter-spacing: 0.5px;
-    margin-bottom: 10px;
+    color: #777;
+    margin-bottom: 8px;
 }
 
 .cyber-contact-group {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .cyber-jelly-btn {
     display: block;
-    padding: 8px 12px;
+    padding: 7px 10px;
     font-size: 12px;
     font-weight: 600;
     color: #ffffff !important;
     background: linear-gradient(180deg, #7ad34d 0%, #52b528 100%);
     border: 1px solid #3e8822;
-    border-radius: 20px;
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 2px 4px rgba(0, 0, 0, 0.1);
     text-shadow: 0 1px 1px rgba(0,0,0,0.2);
     transition: all 0.15s ease;
+    text-decoration: none;
 }
 
 .cyber-jelly-btn:hover {
     transform: translateY(-1px);
     background: linear-gradient(180deg, #87e357 0%, #5bc72d 100%);
-    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9), 0 4px 8px rgba(78, 175, 36, 0.3);
-    opacity: 1 !important;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9), 0 3px 6px rgba(78, 175, 36, 0.3);
+}
+
+.static-btn {
+    cursor: default;
 }
 
 /* 右栏：求职履历主区 */
@@ -627,7 +638,7 @@ a:hover {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
 }
 
 .cyber-resume-block {
@@ -640,33 +651,33 @@ a:hover {
 
 .cyber-block-header {
     background: #dcf5d5;
-    padding: 10px 15px;
-    font-size: 13px;
+    padding: 8px 12px;
+    font-size: 12px;
     font-weight: 700;
     color: #1b470a;
     border-bottom: 1px solid #a8e695;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 
 .block-badge {
     background: #ffb6c1;
     color: #ffffff;
     font-size: 10px;
-    padding: 1px 6px;
-    border-radius: 10px;
+    padding: 1px 5px;
+    border-radius: 8px;
 }
 
 .cyber-block-content {
-    padding: 18px 20px;
-    color: #222222; /* 保证干净高对比度，方便 HR 阅读 */
-    font-size: 14px;
-    line-height: 1.7;
+    padding: 14px 16px;
+    color: #222222;
+    font-size: 13px;
+    line-height: 1.6;
 }
 
 .bio-text-style p {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .bio-text-style p:last-child {
@@ -676,7 +687,7 @@ a:hover {
 .edu-title-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 .edu-date {
@@ -686,39 +697,64 @@ a:hover {
 }
 
 .edu-sub {
-    font-size: 13px;
-    color: #555;
+    font-size: 12px;
+    color: #666;
 }
 
-/* 技能标签纸片感 */
-.cyber-skill-grid {
+/* 按软件类别排列的样式 */
+.software-category-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.software-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.soft-cate-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #2d6b13;
+    min-width: 125px;
+}
+
+.soft-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 6px;
 }
 
 .skill-tag {
     background: #fff0f5;
     border: 1px solid #ffb6c1;
     color: #d81b60;
-    padding: 5px 12px;
+    padding: 3px 8px;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     box-shadow: 1px 1px 0px #ffb6c1;
 }
 
-/* 📱 移动端自适应适配 */
+/* 📱 移动端自适应 */
 @media (max-width: 850px) {
     .cyber-about-overlay {
-        padding: 10px !important;
+        padding: 15px !important;
     }
     .cyber-window-body {
         flex-direction: column;
         padding: 15px;
-        gap: 20px;
+        gap: 16px;
     }
     .cyber-left-card {
         width: 100%;
+    }
+    .software-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
     }
 }
