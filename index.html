@@ -139,60 +139,99 @@
         </div>
     </div>
 
-    <!-- 🌟 About Me 个人介绍全屏弹窗（全新专属排版） -->
-    <div class="detail-overlay" id="aboutDetailOverlay">
-        <div class="detail-header">
-            <div>
-                <a href="#" class="back-link" id="closeAboutBtn"><span class="arrow">←</span> TT Portfolio</a>
-                <span style="margin-left: 15px; font-weight: 500; color: #000;">About Me</span>
-            </div>
-        </div>
+    <!-- 🌟 About Me 个人介绍全屏弹窗（Cyber-Kawaii 复古千禧粉绿风格） -->
+    <div class="detail-overlay cyber-about-overlay" id="aboutDetailOverlay">
         
-        <div class="about-content-wrapper">
-            <!-- 左侧：占据主导地位的详细履历与个人介绍 -->
-            <div class="about-text-column">
-                <h2 class="about-name">谭婕 (Tan Jie)</h2>
-                <p class="about-tagline">Digital Media Artist / UI Designer</p>
-                
-                <div class="about-bio">
-                    <p>专注于数字媒体艺术创作、以人为中心的 UI/UX 体验设计，以及传统文化符号的数字化创新呈现。</p>
-                    <p>具备从全案品牌视觉识别系统（VIS）、AIGC 视觉叙事工作流构建，到实体衍生品工艺打样落地的完整跨界设计能力。</p>
-                </div>
-
-                <div class="about-grid-info">
-                    <div class="about-info-block">
-                        <h4>教育背景 & 经历</h4>
-                        <p>数字媒体艺术 / 2026届</p>
-                        <p>Guangzhou, China</p>
-                    </div>
-
-                    <div class="about-info-block">
-                        <h4>专业技能 / Tools</h4>
-                        <p>UI/UX (Figma, Design System)</p>
-                        <p>VIS 品牌视觉 (AI, PS)</p>
-                        <p>AIGC 工作流 (即梦, ChatGPT)</p>
-                    </div>
-
-                    <div class="about-info-block">
-                        <h4>联系方式 / Contact</h4>
-                        <p>TEL: 15626696080</p>
-                        <p>Email: 834893229@qq.com</p>
-                        <p>小红书: 焦糖餡</p>
-                        <p>Instagram: y0u.tt</p>
-                    </div>
-                </div>
+        <!-- 窗口顶栏 -->
+        <div class="cyber-window-header">
+            <div class="cyber-window-title">
+                <span class="cyber-icon">🎀</span> Profile.exe - About Me
             </div>
-
-            <!-- 右侧：精致比例的个人卡片照片 -->
-            <div class="about-photo-column">
-                <div class="about-photo-card">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200" alt="Tan Jie Profile">
-                    <div class="about-photo-caption">Based in Guangzhou 📍</div>
-                </div>
+            <div class="cyber-window-controls">
+                <a href="#" class="back-link" id="closeAboutBtn"><span class="arrow">←</span> TT Portfolio</a>
+                <span class="win-btn minimize">_</span>
+                <span class="win-btn maximize">□</span>
+                <span class="win-btn close">×</span>
             </div>
         </div>
-    </div>
 
+        <!-- 窗口主体内容 -->
+        <div class="cyber-window-body">
+            
+            <!-- 左栏：个人名片区 -->
+            <div class="cyber-left-card">
+                <!-- 个人大头照 + 复古粉绿立体小相框 -->
+                <div class="cyber-avatar-frame">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800" alt="Tan Jie Profile" class="cyber-avatar-img">
+                    <div class="cyber-avatar-tag">Tan Jie 📍 GZ</div>
+                </div>
+
+                <!-- 基础信息 -->
+                <div class="cyber-profile-meta">
+                    <h3 class="cyber-meta-name">谭婕 (Tan Jie)</h3>
+                    <p class="cyber-meta-job">数字媒体艺术 / UI Designer</p>
+                    <p class="cyber-meta-loc">Guangzhou, China</p>
+                </div>
+
+                <!-- 联系方式（立体果冻按钮） -->
+                <div class="cyber-contact-group">
+                    <div class="cyber-section-sub-title">GET IN TOUCH</div>
+                    <a href="tel:15626696080" class="cyber-jelly-btn">📞 15626696080</a>
+                    <a href="mailto:834893229@qq.com" class="cyber-jelly-btn">✉️ 834893229@qq.com</a>
+                    <a href="https://xhslink.com/m/THrVDmm4iR" target="_blank" class="cyber-jelly-btn">📕 小红书: 焦糖餡</a>
+                    <a href="https://instagram.com/y0u.tt" target="_blank" class="cyber-jelly-btn">📸 IG: y0u.tt</a>
+                </div>
+            </div>
+
+            <!-- 右栏：求职履历主区 -->
+            <div class="cyber-right-resume">
+                
+                <!-- 板块一：About Me -->
+                <div class="cyber-resume-block">
+                    <div class="cyber-block-header">
+                        <span class="block-badge">01</span> ABOUT ME / 自我介绍
+                    </div>
+                    <div class="cyber-block-content bio-text-style">
+                        <p>专注于数字媒体艺术创作、以人为中心的 UI/UX 体验设计，以及传统文化符号的数字化创新呈现。</p>
+                        <p>具备从全案品牌视觉识别系统（VIS）、AIGC 视觉叙事工作流构建，到实体衍生品工艺打样落地的完整跨界设计能力。</p>
+                    </div>
+                </div>
+
+                <!-- 板块二：Education -->
+                <div class="cyber-resume-block">
+                    <div class="cyber-block-header">
+                        <span class="block-badge">02</span> EDUCATION / 教育背景
+                    </div>
+                    <div class="cyber-block-content">
+                        <div class="cyber-edu-item">
+                            <div class="edu-title-row">
+                                <strong>数字媒体艺术专业</strong>
+                                <span class="edu-date">2026 届本科</span>
+                            </div>
+                            <p class="edu-sub">主修：UI/UX 设计、品牌视觉识别、数字媒体艺术、交互设计</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 板块三：Experience & Skills -->
+                <div class="cyber-resume-block">
+                    <div class="cyber-block-header">
+                        <span class="block-badge">03</span> EXPERIENCE & SKILLS / 专业技能
+                    </div>
+                    <div class="cyber-block-content">
+                        <div class="cyber-skill-grid">
+                            <div class="skill-tag">UI/UX (Figma, Design System)</div>
+                            <div class="skill-tag">VIS 品牌视觉 (AI, PS)</div>
+                            <div class="skill-tag">AIGC 工作流 (即梦, ChatGPT)</div>
+                            <div class="skill-tag">插画视觉与衍生品落地</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- 关闭 .cyber-right-resume -->
+
+        </div> <!-- 关闭 .cyber-window-body -->
+    </div> <!-- 关闭 #aboutDetailOverlay -->
     <script src="script.js"></script>
 </body>
 </html>
