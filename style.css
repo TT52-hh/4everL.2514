@@ -341,132 +341,6 @@ a:hover {
 .detail-sidebar-link:hover {
     opacity: 0.5;
 }
-/* ==========================================================================
-   🌟 About Me 专属极简排版样式
-   ========================================================================== */
-
-/* 专属容器：左侧文字为主，右侧照片为辅 */
-.about-content-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 80px;
-    padding: 60px;
-    max-width: 1200px;
-    margin: 57px auto 0 auto;
-    height: calc(100vh - 57px);
-    overflow-y: auto;
-}
-
-/* 左侧文字主体 */
-.about-text-column {
-    flex: 1;
-    max-width: 680px;
-}
-
-.about-name {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 6px;
-    letter-spacing: -0.5px;
-}
-
-.about-tagline {
-    font-size: 14px;
-    color: rgb(31, 189, 229);
-    font-weight: 500;
-    margin-bottom: 30px;
-}
-
-.about-bio {
-    font-size: 15px;
-    color: #333;
-    line-height: 1.8;
-    margin-bottom: 45px;
-}
-
-.about-bio p {
-    margin-bottom: 16px;
-}
-
-/* 多栏网格罗列履历与联系方式 */
-.about-grid-info {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    border-top: 1px solid #eee;
-    padding-top: 35px;
-}
-
-.about-info-block h4 {
-    font-size: 13px;
-    font-weight: 600;
-    color: #000;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.about-info-block p {
-    font-size: 13px;
-    color: #666;
-    line-height: 1.7;
-}
-
-/* 右侧：精细受控的照片卡片（不会过大） */
-.about-photo-column {
-    width: 340px;
-    flex-shrink: 0;
-    position: sticky;
-    top: 0;
-}
-
-.about-photo-card {
-    background: #fafafa;
-    padding: 12px;
-    border-radius: 12px;
-    border: 1px solid #eaeaea;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-}
-
-.about-photo-card img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 8px;
-    display: block;
-}
-
-.about-photo-caption {
-    font-size: 12px;
-    color: #888;
-    text-align: center;
-    margin-top: 10px;
-}
-
-/* 📱 移动端自适应 */
-@media (max-width: 850px) {
-    .about-content-wrapper {
-        flex-direction: column-reverse; /* 手机上文字在上，照片在下 */
-        padding: 30px 20px;
-        gap: 40px;
-        height: auto !important;
-    }
-    
-    .about-photo-column {
-        width: 100%;
-        position: static;
-    }
-    
-    .about-photo-card img {
-        height: 320px;
-    }
-    
-    .about-grid-info {
-        grid-template-columns: 1fr; /* 手机上单栏罗列 */
-        gap: 25px;
-    }
-}
 /* 🌟 加粗版千禧果冻按键 */
 .back-link {
     display: inline-flex;
@@ -560,5 +434,291 @@ a:hover {
     }
     .site-logo a:hover .site-logo-img {
         transform: scale(1.02); /* 手机端悬停去掉位移 */
+    }
+}
+/* ==========================================================================
+   🌸 Cyber-Kawaii 千禧复古粉绿风格 (About Me 专属样式)
+   ========================================================================== */
+
+/* 大背景：浅粉色微格纹背景 */
+.cyber-about-overlay {
+    background-color: #ffdce5 !important;
+    background-image: 
+        linear-gradient(rgba(255, 182, 193, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 182, 193, 0.3) 1px, transparent 1px);
+    background-size: 20px 20px;
+    display: none; /* 由 JS 动态控制显示 */
+    padding: 30px !important;
+    box-sizing: border-box;
+    overflow-y: auto !important;
+}
+
+/* 外层大窗口：薄荷绿底色 + Win98/XP 经典立体 Bevel 边框 */
+.cyber-window-header {
+    background: linear-gradient(90deg, #52b528 0%, #7ad34d 100%);
+    border-top: 2px solid #a3f780;
+    border-left: 2px solid #a3f780;
+    border-right: 2px solid #2d6b13;
+    border-bottom: 2px solid #2d6b13;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-radius: 6px 6px 0 0;
+}
+
+.cyber-window-title {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 14px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cyber-window-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Win98 风格假按钮 */
+.win-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: #d4f8cd;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #3e8822;
+    border-bottom: 2px solid #3e8822;
+    font-size: 12px;
+    font-weight: bold;
+    color: #1b470a;
+    cursor: default;
+    user-select: none;
+}
+
+/* 窗口主体：果冻薄荷绿 */
+.cyber-window-body {
+    max-width: 1100px;
+    margin: 0 auto 50px auto;
+    background: #e1f7dc;
+    border-left: 3px solid #ffffff;
+    border-right: 3px solid #3e8822;
+    border-bottom: 3px solid #3e8822;
+    box-shadow: 6px 8px 20px rgba(216, 112, 147, 0.25);
+    padding: 30px;
+    display: flex;
+    gap: 35px;
+    border-radius: 0 0 8px 8px;
+}
+
+/* 左栏：个人名片区 */
+.cyber-left-card {
+    width: 300px;
+    flex-shrink: 0;
+    background: #f0fceb;
+    border: 2px solid #a8e695;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: inset 1px 1px 0px #ffffff;
+}
+
+/* 个人大头照立体小相框（粉绿相间） */
+.cyber-avatar-frame {
+    background: #ffd3e0;
+    border: 3px solid #ff9ebb;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 3px 3px 0px #52b528;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cyber-avatar-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #ffb6c1;
+    display: block;
+}
+
+.cyber-avatar-tag {
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #2d6b13;
+    background: #d4f8cd;
+    padding: 3px 8px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.cyber-profile-meta {
+    margin-bottom: 25px;
+    border-bottom: 1px dashed #a8e695;
+    padding-bottom: 15px;
+}
+
+.cyber-meta-name {
+    font-size: 18px;
+    color: #111;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.cyber-meta-job {
+    font-size: 13px;
+    color: #44a31d;
+    font-weight: 600;
+}
+
+.cyber-meta-loc {
+    font-size: 12px;
+    color: #666;
+    margin-top: 2px;
+}
+
+/* 联系方式：立体果冻绿按钮 */
+.cyber-section-sub-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.cyber-contact-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cyber-jelly-btn {
+    display: block;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff !important;
+    background: linear-gradient(180deg, #7ad34d 0%, #52b528 100%);
+    border: 1px solid #3e8822;
+    border-radius: 20px;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+    transition: all 0.15s ease;
+}
+
+.cyber-jelly-btn:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(180deg, #87e357 0%, #5bc72d 100%);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9), 0 4px 8px rgba(78, 175, 36, 0.3);
+    opacity: 1 !important;
+}
+
+/* 右栏：求职履历主区 */
+.cyber-right-resume {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cyber-resume-block {
+    background: #ffffff;
+    border: 2px solid #a8e695;
+    border-radius: 6px;
+    box-shadow: 2px 2px 0px #c2f0b3;
+    overflow: hidden;
+}
+
+.cyber-block-header {
+    background: #dcf5d5;
+    padding: 10px 15px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1b470a;
+    border-bottom: 1px solid #a8e695;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.block-badge {
+    background: #ffb6c1;
+    color: #ffffff;
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 10px;
+}
+
+.cyber-block-content {
+    padding: 18px 20px;
+    color: #222222; /* 保证干净高对比度，方便 HR 阅读 */
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.bio-text-style p {
+    margin-bottom: 10px;
+}
+
+.bio-text-style p:last-child {
+    margin-bottom: 0;
+}
+
+.edu-title-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.edu-date {
+    color: #52b528;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.edu-sub {
+    font-size: 13px;
+    color: #555;
+}
+
+/* 技能标签纸片感 */
+.cyber-skill-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tag {
+    background: #fff0f5;
+    border: 1px solid #ffb6c1;
+    color: #d81b60;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 1px 1px 0px #ffb6c1;
+}
+
+/* 📱 移动端自适应适配 */
+@media (max-width: 850px) {
+    .cyber-about-overlay {
+        padding: 10px !important;
+    }
+    .cyber-window-body {
+        flex-direction: column;
+        padding: 15px;
+        gap: 20px;
+    }
+    .cyber-left-card {
+        width: 100%;
     }
 }
